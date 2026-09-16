@@ -51,6 +51,20 @@ There's also a lighter, single-page
 covering the reference pages, curriculum, and use cases — useful if this
 site isn't reachable. It's refreshed manually rather than on every push;
 this site is the always-current one.
+
+## Related repositories
+
+This repo is the math layer: the deterministic analytics and the curriculum
+that teaches you to derive them.
+[agentic-pm-lab](https://github.com/navoditk/agentic-pm-lab) is the agent
+layer built on the same domain — how to let an LLM call analytics like these
+without it inventing the numbers, using LangGraph/Deep Agents, Cedar
+authorization, evaluation, OpenTelemetry, MCP, and AWS Bedrock AgentCore.
+
+Read them in that order. This repo answers "what is DV01, and how do I
+compute it correctly?"; agentic-pm-lab answers "how do I put a DV01 tool
+behind an agent and still trust the answer?" See
+[ROADMAP](ROADMAP.md)'s Phase 12 for where the two meet.
 """
 
 
