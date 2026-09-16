@@ -1,14 +1,15 @@
 # Learning Paths
 
-This file is maintained as a compatibility entry point. The canonical docs live in [docs/learning-paths.md](docs/learning-paths.md).
+A compatibility entry point. The canonical guide is
+**[docs/learning-paths.md](docs/learning-paths.md)** — go there.
 
-## Choose your route
+Other routes into the material:
 
-- [docs/learning-paths.md](docs/learning-paths.md) — canonical learning guide
-- [curriculum/bootcamp_01_foundations/README.md](curriculum/bootcamp_01_foundations/README.md) — foundations sprint
-- [reference/index.md](reference/index.md) — quick reference
+- [curriculum/bootcamp_01_foundations/README.md](curriculum/bootcamp_01_foundations/README.md) — the foundations sprint, day by day
+- [reference/index.md](reference/index.md) — every concept and instrument page, by topic
 - [use_cases/index.md](use_cases/index.md) — problem-driven learning
+- [docs/rates_credit_mortgages_roadmap.md](docs/rates_credit_mortgages_roadmap.md) — rates, credit, and mortgages end to end
+- `/master` — the interactive trainer; see [docs/mastery-guide.md](docs/mastery-guide.md)
 
-## Best start
-
-For a first pass, begin with the foundations bootcamp and then move into the reference library or use cases.
+For a first pass, start with the foundations bootcamp, then move into the
+reference library or use cases.

@@ -55,6 +55,7 @@ This file is the long-range view for the repository. The canonical docs hub is [
 - VaR / ES
 - stress testing
 - scenario design
+- backtesting biases: look-ahead, survivorship, stale data, point-in-time vintage
 
 ## Phase 5 — Fixed-income foundations
 - bond cash flows
@@ -66,6 +67,7 @@ This file is the long-range view for the repository. The canonical docs hub is [
 - convexity
 - key-rate duration
 - carry and roll
+- accrued interest, clean vs dirty price, day-count conventions, settlement
 
 ## Phase 6 — Rates portfolio management
 - curve construction

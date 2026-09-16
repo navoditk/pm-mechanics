@@ -33,10 +33,10 @@ frameworks, and manual reasoning comes before asking an agent.
 
 | | |
 |---|---|
-| Analytics code | 1,521 lines across 32 modules in `src/pm/` |
-| Tests | 198 passing, 18 test files |
+| Analytics code | 1,640 lines across 33 modules in `src/pm/` |
+| Tests | 211 passing, 19 test files |
 | Notebooks | 37, across 8 tracks (foundations, optimization, active, fixed income, FX/commodities, derivatives, equity, integration) |
-| Reference pages | 89 (including a glossary) |
+| Reference pages | 91 (including a glossary) |
 | Roadmap phases | 16 of 16 complete |
 | Bootcamp curriculum | 18 days (5 core + 13 extension) |
 | Use-case workflows | 11 |
@@ -187,6 +187,26 @@ scenario, and Brinson attribution into the one-page summary a PM would
 actually read, closing out notebook 12's stub "Capstone" section that
 was never built out.
 
+A cross-repository audit against
+[agentic-pm-lab](https://github.com/navoditk/agentic-pm-lab) — which
+teaches the agent layer over this same domain — checked that every
+fixed-income concept its curriculum introduces is treated in full here.
+Most were. Seven were not, and are now closed. Four were settlement
+mechanics: accrued interest, clean versus dirty price, day-count
+conventions, and the settlement date itself. That was a genuine hole —
+every other page in this repo works in clean prices, so what a buyer
+*actually pays* was absent, and `src/pm/fixed_income/bond.py` priced a
+bond without being able to settle one. `settlement.py` now implements
+`day_count_fraction` across 30/360, ACT/360, ACT/365, and ACT/ACT,
+plus `accrued_interest`, `dirty_price`, `clean_price`, and
+`invoice_amount`, with tests pinning the order-dependent 30/360
+end-of-month adjustments and proving the convention materially changes
+the number. The other three were backtesting discipline — look-ahead
+bias, survivorship bias, and point-in-time/vintage data — now covered in
+`concepts/backtesting_biases.md`, deliberately without code: every one of
+them is a property of how a dataset was assembled, not of arithmetic, and
+this repo's data layer is static mock CSVs with no vintage dimension.
+
 ## What's implemented vs. conceptual-only
 
 The repository is deliberately explicit about this split — a reference
@@ -194,8 +214,8 @@ page for a harder topic states *why* it wasn't coded, rather than
 shipping a shaky implementation. Examples: hierarchical risk parity,
 regime-aware allocation, multi-period optimization, full OAS/MBS
 negative-convexity pricing, non-agency tranche waterfalls, credit rating
-migration matrices, and full multi-factor equity risk-model estimation
-(Barra/Axioma-style). Each has a page explaining the specific machinery
+migration matrices, full multi-factor equity risk-model estimation
+(Barra/Axioma-style), and backtesting biases. Each has a page explaining the specific machinery
 that would be needed and why it's a materially bigger project than this
 repo's "small transparent function" style. Treat those pages as
 interview-ready conceptual fluency, not working code.

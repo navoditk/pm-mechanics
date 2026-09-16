@@ -26,6 +26,12 @@ RELATED = {
         ("FX carry (the FX analogue)", "fx/fx_carry.md"),
         ("Forward rates", "fixed_income/forward_rates.md"),
     ],
+    "concepts/backtesting_biases.md": [
+        ("Performance measurement", "concepts/performance_measurement.md"),
+        ("Information coefficient", "concepts/information_coefficient.md"),
+        ("Liquidity", "concepts/liquidity.md"),
+        ("Transaction costs and rebalancing", "concepts/transaction_costs_and_rebalancing.md"),
+    ],
     "concepts/benchmark_basics.md": [
         ("Tracking error", "concepts/tracking_error.md"),
         ("Information ratio", "concepts/information_ratio.md"),
@@ -101,6 +107,7 @@ RELATED = {
     "concepts/performance_measurement.md": [
         ("Sharpe ratio", "concepts/sharpe_ratio.md"),
         ("Brinson attribution", "concepts/brinson_attribution.md"),
+        ("Backtesting biases", "concepts/backtesting_biases.md"),
         ("Liability-driven investing", "concepts/liability_driven_investing.md"),
     ],
     "concepts/portfolio_return.md": [
@@ -157,6 +164,7 @@ RELATED = {
     "concepts/stress_testing.md": [
         ("Value at risk", "concepts/value_at_risk.md"),
         ("Key-rate duration", "fixed_income/key_rate_duration.md"),
+        ("Backtesting biases", "concepts/backtesting_biases.md"),
     ],
     "concepts/tracking_error.md": [
         ("Benchmark basics", "concepts/benchmark_basics.md"),
@@ -245,7 +253,14 @@ RELATED = {
         ("Dividend discount model", "equity/dividend_discount_model.md"),
         ("Relative valuation multiples", "equity/relative_valuation_multiples.md"),
     ],
+    "fixed_income/accrued_interest_and_settlement.md": [
+        ("Bond pricing", "fixed_income/bond_pricing.md"),
+        ("Repo and financing", "fixed_income/repo_and_financing.md"),
+        ("Carry and rolldown", "fixed_income/carry_and_rolldown.md"),
+        ("Duration", "fixed_income/duration.md"),
+    ],
     "fixed_income/bond_pricing.md": [
+        ("Accrued interest and settlement", "fixed_income/accrued_interest_and_settlement.md"),
         ("Duration", "fixed_income/duration.md"),
         ("DV01", "fixed_income/dv01.md"),
         ("Curve construction", "fixed_income/curve_construction.md"),

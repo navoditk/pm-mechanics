@@ -1476,6 +1476,105 @@
       "description": "The pre-tax yield a fully taxable bond would need to match a"
     },
     {
+      "name": "accrued_interest",
+      "module": "pm.fixed_income.settlement",
+      "parameters": [
+        {
+          "name": "face",
+          "default": null
+        },
+        {
+          "name": "coupon_rate",
+          "default": null
+        },
+        {
+          "name": "last_coupon_date",
+          "default": null
+        },
+        {
+          "name": "settlement_date",
+          "default": null
+        },
+        {
+          "name": "frequency",
+          "default": "2"
+        },
+        {
+          "name": "convention",
+          "default": "'30/360'"
+        }
+      ],
+      "description": "Interest earned by the seller since the last coupon but not yet paid."
+    },
+    {
+      "name": "clean_price",
+      "module": "pm.fixed_income.settlement",
+      "parameters": [
+        {
+          "name": "dirty",
+          "default": null
+        },
+        {
+          "name": "accrued",
+          "default": null
+        }
+      ],
+      "description": "The quoted price, recovered from the invoice price."
+    },
+    {
+      "name": "day_count_fraction",
+      "module": "pm.fixed_income.settlement",
+      "parameters": [
+        {
+          "name": "start",
+          "default": null
+        },
+        {
+          "name": "end",
+          "default": null
+        },
+        {
+          "name": "convention",
+          "default": "'30/360'"
+        }
+      ],
+      "description": "Year-fraction between two dates under a stated day-count convention."
+    },
+    {
+      "name": "dirty_price",
+      "module": "pm.fixed_income.settlement",
+      "parameters": [
+        {
+          "name": "clean_price",
+          "default": null
+        },
+        {
+          "name": "accrued",
+          "default": null
+        }
+      ],
+      "description": "The full (invoice) price actually paid: quote plus accrued interest."
+    },
+    {
+      "name": "invoice_amount",
+      "module": "pm.fixed_income.settlement",
+      "parameters": [
+        {
+          "name": "face",
+          "default": null
+        },
+        {
+          "name": "clean_price_per_100",
+          "default": null
+        },
+        {
+          "name": "accrued",
+          "default": null
+        }
+      ],
+      "description": "Cash settlement amount for a position, scaled from a per-100 quote."
+    },
+    {
       "name": "swap_dv01",
       "module": "pm.fixed_income.swaps",
       "parameters": [
