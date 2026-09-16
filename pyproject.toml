@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "portfolio-management-bible"
+name = "pm-mechanics"
 version = "0.1.0"
-description = "Living PM/FICC learning and analytics repository"
+description = "A build-first portfolio-management mechanics trainer: FICC and equity analytics, derived, coded, and tested"
 requires-python = ">=3.12"
 dependencies = [
     "numpy>=2.0",

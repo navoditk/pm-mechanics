@@ -111,7 +111,7 @@ v0.5-ficc-risk
 v0.6-attribution
 v0.7-use-cases
 v0.8-tutors
-v1.0-pm-bible
+v1.0-pm-mechanics
 ```
 
 Create annotated releases after meaningful roadmap phases, not after each notebook.

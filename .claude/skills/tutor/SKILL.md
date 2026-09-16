@@ -3,7 +3,7 @@ name: tutor
 description: Runs a live, turn-by-turn adaptive Socratic tutoring session on a PM/FICC concept, grounded in this repo's reference pages, notebooks, and tests. Use for "/tutor <topic-or-persona>" to study a concept or self-assess.
 ---
 
-# PM Bible Tutor
+# PM Mechanics Tutor
 
 This skill turns the persona specs in `tutors/*.md` from inert documents into a
 live session. It does not replace them — it runs them.
