@@ -1,8 +1,8 @@
-site_name: PM Bible
-site_description: A build-first PM/FICC-and-equity learning and analytics curriculum
-site_url: https://navoditk.github.io/pm-bible/
-repo_url: https://github.com/navoditk/pm-bible
-repo_name: navoditk/pm-bible
+site_name: PM Mechanics
+site_description: A build-first portfolio-management mechanics trainer — FICC and equity analytics, derived, coded, and tested
+site_url: https://navoditk.github.io/pm-mechanics/
+repo_url: https://github.com/navoditk/pm-mechanics
+repo_name: navoditk/pm-mechanics
 edit_uri: edit/main/
 
 docs_dir: site_src

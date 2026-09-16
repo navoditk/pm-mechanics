@@ -8,10 +8,10 @@ workflow guide.
 
 ## What this is
 
-pm-bible is a build-first PM/FICC-and-equity learning and analytics
-repository. It runs three modes at once — learn (curriculum and
-notebooks), look up (reference pages), apply (use cases) — under one
-discipline, stated in the root README:
+pm-mechanics is a build-first portfolio-management mechanics trainer,
+covering FICC and equity analytics. It runs three modes at once — learn
+(curriculum and notebooks), look up (reference pages), apply (use
+cases) — under one discipline, stated in the root README:
 
 > Read → predict → derive → type code yourself → test → compare with
 > reference → explain
@@ -22,7 +22,7 @@ frameworks, and manual reasoning comes before asking an agent.
 
 ## Browse without cloning
 
-- **[Docs site](https://navoditk.github.io/pm-bible/)** — every
+- **[Docs site](https://navoditk.github.io/pm-mechanics/)** — every
   reference page, notebook, and use case as a searchable static site,
   rebuilt automatically from `main` on every push
 - **[Artifact preview](https://claude.ai/code/artifact/902379a8-c198-4970-aca8-4cb71e2a3d5c)**

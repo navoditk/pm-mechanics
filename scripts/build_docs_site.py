@@ -18,12 +18,16 @@ STAGE = ROOT / "site_src"
 TOP_LEVEL_FILES = ["README.md", "ROADMAP.md", "AGENTS.md", "SDLC.md", "SETUP.md"]
 TOP_LEVEL_DIRS = ["reference", "curriculum", "notebooks", "use_cases", "tutors", "resources", "docs"]
 
-HOMEPAGE = """# PM Bible
+HOMEPAGE = """# PM Mechanics
 
 Public, read-only mirror of the
-[pm-bible](https://github.com/navoditk/pm-bible) curriculum — browse the
-entire material without cloning the repo. This site rebuilds
+[pm-mechanics](https://github.com/navoditk/pm-mechanics) curriculum — browse
+the entire material without cloning the repo. This site rebuilds
 automatically from `main` on every push.
+
+A mechanics trainer, not a desk-grade risk system: no live market data, no
+production curve or optimization engine. The unit of work is a formula made
+concrete, unit-aware, and tested.
 
 For the interactive version — running the tests, `/master`, `/tutor`,
 `/pm-query` — clone the repo instead; see

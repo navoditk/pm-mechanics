@@ -34,7 +34,7 @@ gh auth status
 ## Step 1 — Create the remote repository
 
 ```bash
-gh repo create portfolio-management-bible --private
+gh repo create pm-mechanics --private
 ```
 
 If you prefer a public repo, use `--public` instead.
@@ -43,8 +43,8 @@ If you prefer a public repo, use `--public` instead.
 
 ```bash
 cd ~/GitHub
-gh repo clone <YOUR_GITHUB_USERNAME>/portfolio-management-bible
-cd portfolio-management-bible
+gh repo clone <YOUR_GITHUB_USERNAME>/pm-mechanics
+cd pm-mechanics
 ```
 
 Check the repo state:

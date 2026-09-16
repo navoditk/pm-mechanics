@@ -1,13 +1,15 @@
-# Portfolio Management Bible
+# PM Mechanics
 
-[![CI](https://github.com/navoditk/pm-bible/actions/workflows/ci.yml/badge.svg)](https://github.com/navoditk/pm-bible/actions/workflows/ci.yml)
-[![Docs](https://github.com/navoditk/pm-bible/actions/workflows/docs.yml/badge.svg)](https://github.com/navoditk/pm-bible/actions/workflows/docs.yml)
+[![CI](https://github.com/navoditk/pm-mechanics/actions/workflows/ci.yml/badge.svg)](https://github.com/navoditk/pm-mechanics/actions/workflows/ci.yml)
+[![Docs](https://github.com/navoditk/pm-mechanics/actions/workflows/docs.yml/badge.svg)](https://github.com/navoditk/pm-mechanics/actions/workflows/docs.yml)
 
-A build-first PM/FICC-and-equity learning and analytics repository for portfolio construction, risk, optimization, fixed-income, and equity work.
+A build-first portfolio-management mechanics trainer: the FICC and equity analytics behind portfolio construction, risk, optimization, fixed income, and equity work — derived, coded, and tested by hand rather than read about.
+
+**A mechanics trainer, not a desk-grade risk system.** There are no live market-data feeds and no production-grade curve or optimization engine. The unit of work here is a formula made concrete, unit-aware, and tested — the median `src/pm` module is about 30 lines. [docs/OVERVIEW.md](docs/OVERVIEW.md) states exactly how deep each area goes and which topics are deliberately conceptual-only.
 
 ## Browse without cloning
 
-- **[Docs site](https://navoditk.github.io/pm-bible/)** — the entire curriculum (every reference page, notebook, and use case) as a searchable static site, rebuilt automatically from `main` on every push
+- **[Docs site](https://navoditk.github.io/pm-mechanics/)** — the entire curriculum (every reference page, notebook, and use case) as a searchable static site, rebuilt automatically from `main` on every push
 - **[Read-only preview](https://claude.ai/code/artifact/902379a8-c198-4970-aca8-4cb71e2a3d5c)** — a lighter, single-page version covering every reference page, the curriculum outline, and use cases, for a quick look or if the docs site above isn't reachable; refreshed on request rather than automatically
 
 Either works without git, Python, or an account — for the interactive version (running tests, `/master`, `/tutor`, `/pm-query`), clone the repo instead.
