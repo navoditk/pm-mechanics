@@ -144,6 +144,14 @@ This file is the long-range view for the repository. The canonical docs hub is [
 - observability
 - tutor agents
 
+In this repo, Phase 12 is scoped to what serves the curriculum: `/pm-query`,
+`/tutor`, and `/master`. The full version of this phase — governed multi-agent
+workflows, Cedar authorization, evaluation suites, OpenTelemetry, MCP, and an
+AWS Bedrock AgentCore deployment path — is built out as a separate repository,
+[agentic-pm-lab](https://github.com/navoditk/agentic-pm-lab). It is kept
+separate deliberately: the agent stack carries a much heavier dependency set
+than this repo's numpy/scipy/cvxpy core, and the two have different audiences.
+
 ## Phase 13 — Equity portfolio management
 - dividend discount model (Gordon growth, two-stage)
 - relative valuation multiples (justified P/E, PEG)

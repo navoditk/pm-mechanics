@@ -61,6 +61,20 @@ pytest -q
 - `templates/` — templates for new concepts, notebooks, and use cases
 - `docs/` — canonical documentation hub for setup, workflow, and progress
 
+## Related repositories
+
+This repo is the **math layer**: the deterministic analytics and the curriculum
+that teaches you to derive them.
+
+[**agentic-pm-lab**](https://github.com/navoditk/agentic-pm-lab) is the **agent
+layer** built on the same domain: how to let an LLM call analytics like these
+without it inventing the numbers — LangGraph/Deep Agents, Cedar authorization,
+evaluation, OpenTelemetry, MCP, and AWS Bedrock AgentCore.
+
+Read them in that order. This repo answers *"what is DV01, and how do I compute
+it correctly?"*; agentic-pm-lab answers *"how do I put a DV01 tool behind an
+agent and still trust the answer?"* Phase 12 below is where the two meet.
+
 ## Core principles
 
 - Financial logic must be documented, unit-aware, and tested
