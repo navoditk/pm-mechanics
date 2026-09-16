@@ -39,9 +39,17 @@ from .mbs import (
     weighted_average_life,
 )
 from .munis import tax_equivalent_yield
+from .settlement import (
+    accrued_interest,
+    clean_price,
+    day_count_fraction,
+    dirty_price,
+    invoice_amount,
+)
 from .swaps import swap_dv01, swap_spread
 
 __all__ = [
+    "accrued_interest",
     "apply_prepayment",
     "bond_cashflows",
     "bond_price",
@@ -50,10 +58,13 @@ __all__ = [
     "carry_and_rolldown",
     "carry_return",
     "cds_bond_basis",
+    "clean_price",
     "conversion_premium",
     "conversion_value",
     "convexity",
     "credit_spread_from_hazard",
+    "day_count_fraction",
+    "dirty_price",
     "dollar_roll_implied_financing_rate",
     "dv01",
     "effective_duration",
@@ -66,6 +77,7 @@ __all__ = [
     "index_intrinsic_spread",
     "interest_coverage_ratio",
     "interpolate_zero_rate",
+    "invoice_amount",
     "key_rate_return_approximation",
     "leverage_ratio",
     "macaulay_duration",

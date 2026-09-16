@@ -44,9 +44,16 @@ every page has a glossary entry, but every glossary entry has a page.
 - **Value at Risk (VaR)** — the loss not expected to be exceeded over a horizon at a given confidence level. [More →](concepts/value_at_risk.md)
 - **Expected Shortfall (ES)** — the average loss *given* that VaR is breached; always worse than VaR at the same confidence. [More →](concepts/value_at_risk.md)
 - **Stress testing / scenario analysis** — "what happens under this specific, named shock," as distinct from VaR's statistical-confidence framing. [More →](concepts/stress_testing.md)
+- **Look-ahead bias** — using a value in a decision dated before that value was published; usually a *revision*, not a future price. [More →](concepts/backtesting_biases.md)
+- **Survivorship bias** — measuring only the names still in the dataset, so defaults and closures never drag the average down. [More →](concepts/backtesting_biases.md)
+- **Point-in-time data / vintage** — the dataset exactly as it stood on a given date; what a replayable backtest must read instead of today's revised series. [More →](concepts/backtesting_biases.md)
 
 ## Fixed income
 
+- **Accrued interest** — coupon earned by the seller since the last payment date, added to the quoted price at settlement. [More →](fixed_income/accrued_interest_and_settlement.md)
+- **Clean price / dirty price** — the quoted price versus the price actually paid (clean + accrued). [More →](fixed_income/accrued_interest_and_settlement.md)
+- **Day-count convention** — the rule (30/360, ACT/360, ACT/365, ACT/ACT) converting dates to a year-fraction for accrual; part of the bond's terms, not a formatting choice. [More →](fixed_income/accrued_interest_and_settlement.md)
+- **Settlement date** — the date cash and bond actually change hands, and the date accrued interest is measured to. [More →](fixed_income/accrued_interest_and_settlement.md)
 - **Duration** — the sensitivity of a bond's price to a small yield change, in years. [More →](fixed_income/duration.md)
 - **DV01** — the dollar price change of a bond for a 1bp yield move; duration expressed in dollars, not years. [More →](fixed_income/dv01.md)
 - **Convexity** — the second-order (curvature) correction to the duration approximation. [More →](fixed_income/convexity.md)

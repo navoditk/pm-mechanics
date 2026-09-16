@@ -33,9 +33,11 @@ SECTIONS = [
         ("concepts/factor_risk_contribution.md", "Factor Risk Contribution"),
         ("concepts/value_at_risk.md", "Value at Risk"),
         ("concepts/stress_testing.md", "Stress Testing"),
+        ("concepts/backtesting_biases.md", "Backtesting Biases and Point-in-Time Data"),
     ]),
     ("Fixed Income", "Foundations", [
         ("fixed_income/bond_pricing.md", "Bond Pricing"),
+        ("fixed_income/accrued_interest_and_settlement.md", "Accrued Interest and Settlement"),
         ("fixed_income/duration.md", "Duration"),
         ("fixed_income/dv01.md", "DV01"),
         ("fixed_income/convexity.md", "Convexity"),

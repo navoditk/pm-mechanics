@@ -32,12 +32,14 @@ New to this vocabulary? Start with the [Glossary](glossary.md) for a one-line-pe
 - [Factor Risk Contribution](concepts/factor_risk_contribution.md)
 - [Value at Risk](concepts/value_at_risk.md)
 - [Stress Testing](concepts/stress_testing.md)
+- [Backtesting Biases and Point-in-Time Data](concepts/backtesting_biases.md)
 
 ## Fixed Income
 
 ### Foundations
 
 - [Bond Pricing](fixed_income/bond_pricing.md)
+- [Accrued Interest and Settlement](fixed_income/accrued_interest_and_settlement.md)
 - [Duration](fixed_income/duration.md)
 - [DV01](fixed_income/dv01.md)
 - [Convexity](fixed_income/convexity.md)

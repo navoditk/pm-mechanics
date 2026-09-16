@@ -84,6 +84,7 @@ transparent function" style doesn't attempt to encode.
 ## Related
 - [Sharpe ratio](sharpe_ratio.md)
 - [Brinson attribution](brinson_attribution.md)
+- [Backtesting biases](backtesting_biases.md)
 - [Liability-driven investing](liability_driven_investing.md)
 
 ## Free resources

@@ -88,9 +88,11 @@ nav:
           - Factor Risk Contribution: reference/concepts/factor_risk_contribution.md
           - Value at Risk: reference/concepts/value_at_risk.md
           - Stress Testing: reference/concepts/stress_testing.md
+          - Backtesting Biases and Point-in-Time Data: reference/concepts/backtesting_biases.md
       - Fixed Income:
           - Foundations:
               - Bond Pricing: reference/fixed_income/bond_pricing.md
+              - Accrued Interest and Settlement: reference/fixed_income/accrued_interest_and_settlement.md
               - Duration: reference/fixed_income/duration.md
               - DV01: reference/fixed_income/dv01.md
               - Convexity: reference/fixed_income/convexity.md

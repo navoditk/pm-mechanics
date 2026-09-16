@@ -25,7 +25,9 @@ decide what to revisit. Not hand-edited outside of a tutor session.
 | Factor risk contribution | `reference/concepts/factor_risk_contribution.md` | untested | — |
 | Value at risk / expected shortfall | `reference/concepts/value_at_risk.md` | untested | — |
 | Stress testing | `reference/concepts/stress_testing.md` | untested | — |
+| Backtesting biases and point-in-time data | `reference/concepts/backtesting_biases.md` | untested | — |
 | Bond pricing / YTM | `reference/fixed_income/bond_pricing.md` | untested | — |
+| Accrued interest and settlement | `reference/fixed_income/accrued_interest_and_settlement.md` | untested | — |
 | Duration, DV01, convexity, KRD | `reference/fixed_income/duration.md`, `dv01.md`, `convexity.md`, `key_rate_duration.md` | confirmed | 2026-09-02, `docs/tutor_sessions/2026-09-02-fixed_income_tutor-duration.md` |
 | Credit spreads, spread duration | `reference/fixed_income/spread_duration.md` | untested | — |
 | Convertible bonds | `reference/fixed_income/convertible_bonds.md` | untested | — |
