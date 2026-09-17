@@ -147,7 +147,7 @@ This file is the long-range view for the repository. The canonical docs hub is [
 - tutor agents
 
 In this repo, Phase 12 is scoped to what serves the curriculum: `/pm-query`,
-`/tutor`, and `/master`. The full version of this phase — governed multi-agent
+`/tutor`, and `/pmexpert`. The full version of this phase — governed multi-agent
 workflows, Cedar authorization, evaluation suites, OpenTelemetry, MCP, and an
 AWS Bedrock AgentCore deployment path — is built out as a separate repository,
 [agentic-pm-lab](https://github.com/navoditk/agentic-pm-lab). It is kept

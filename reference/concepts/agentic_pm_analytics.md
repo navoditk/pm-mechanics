@@ -28,7 +28,7 @@ function, never doing the arithmetic itself.
 - **Observability** — both skills log every session/query to
   `docs/tutor_sessions/` and `docs/analytics_queries/` respectively.
 - **Tutor agents** — `.claude/skills/tutor/SKILL.md` (`/tutor`), built in
-  an earlier session, plus `.claude/skills/master/SKILL.md` (`/master`),
+  an earlier session, plus `.claude/skills/pmexpert/SKILL.md` (`/pmexpert`),
   a later addition that sequences the whole curriculum through `/tutor`'s
   same routing table and personas rather than duplicating them, and adds
   quiz/scenario/exam modes `/tutor` doesn't have.
@@ -51,4 +51,4 @@ real analytics rather than just explanation.
 
 ## Related
 tutor skill (`.claude/skills/tutor/SKILL.md`), mastery skill
-(`.claude/skills/master/SKILL.md`), `docs/tool_schema.json`, `AGENTS.md`.
+(`.claude/skills/pmexpert/SKILL.md`), `docs/tool_schema.json`, `AGENTS.md`.

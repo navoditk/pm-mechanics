@@ -6,7 +6,7 @@ This folder is the canonical documentation hub for the repository.
 
 - [Getting started](./getting-started.md) — install, orient, and begin the first learning unit
 - [Overview](./OVERVIEW.md) — a quick-read snapshot of what the repo actually contains, coverage, and gaps
-- [Mastery guide](./mastery-guide.md) — learn interactively with `/master` instead of picking notebooks by hand
+- [Mastery guide](./mastery-guide.md) — learn interactively with `/pmexpert` instead of picking notebooks by hand
 - [Learning paths](./learning-paths.md) — choose a route by goal or time horizon
 - [Rates, credit, and mortgages: zero to hero](./rates_credit_mortgages_roadmap.md) — a fully sequenced fixed-income path with a reference page, notebook, and verified resources at every step
 - [Roadmap](../ROADMAP.md) — long-term curriculum and milestones
@@ -44,5 +44,5 @@ This folder is the canonical documentation hub for the repository.
 5. Implement and test reusable logic in `src/pm/`
 6. Update progress in [PROGRESS](./PROGRESS.md)
 
-Or skip steps 2–4 and let `/master` pick the next concept for you — see
+Or skip steps 2–4 and let `/pmexpert` pick the next concept for you — see
 the [mastery guide](./mastery-guide.md).

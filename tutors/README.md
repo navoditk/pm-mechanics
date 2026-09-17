@@ -13,13 +13,13 @@ answer. See `reference/concepts/agentic_pm_analytics.md` for how the two
 skills relate.
 
 To work through the *entire* curriculum rather than one topic at a time,
-use `/master` (`.claude/skills/master/SKILL.md`) — a single,
-self-contained trainer with no second skill to invoke. `/master` alone
+use `/pmexpert` (`.claude/skills/pmexpert/SKILL.md`) — a single,
+self-contained trainer with no second skill to invoke. `/pmexpert` alone
 teaches the next weak-or-untested concept in curriculum order;
-`/master quiz` runs 10 rapid multiple-choice questions (`/master quiz 20`
-for a bigger round); `/master scenario` applies already-confirmed
-concepts to a real `use_cases/*` workflow; `/master exam` runs a
-multi-concept oral assessment ladder; `/master status` gives a one-line
+`/pmexpert quiz` runs 10 rapid multiple-choice questions (`/pmexpert quiz 20`
+for a bigger round); `/pmexpert scenario` applies already-confirmed
+concepts to a real `use_cases/*` workflow; `/pmexpert exam` runs a
+multi-concept oral assessment ladder; `/pmexpert status` gives a one-line
 progress readout. It reads the same persona files and grounding
 materials `/tutor` uses, so `/tutor` remains available on its own for a
 quick one-off session on a single topic outside a mastery pass. See

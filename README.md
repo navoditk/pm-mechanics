@@ -12,7 +12,7 @@ A build-first portfolio-management mechanics trainer: the FICC and equity analyt
 - **[Docs site](https://navoditk.github.io/pm-mechanics/)** — the entire curriculum (every reference page, notebook, and use case) as a searchable static site, rebuilt automatically from `main` on every push
 - **[Read-only preview](https://claude.ai/code/artifact/902379a8-c198-4970-aca8-4cb71e2a3d5c)** — a lighter, single-page version covering every reference page, the curriculum outline, and use cases, for a quick look or if the docs site above isn't reachable; refreshed on request rather than automatically
 
-Either works without git, Python, or an account — for the interactive version (running tests, `/master`, `/tutor`, `/pm-query`), clone the repo instead.
+Either works without git, Python, or an account — for the interactive version (running tests, `/pmexpert`, `/tutor`, `/pm-query`), clone the repo instead.
 
 ## What this repo is
 
@@ -33,7 +33,7 @@ The goal is not just to read about PM concepts. The goal is to understand them d
 5. Run the test suite and update progress in [docs/PROGRESS.md](docs/PROGRESS.md)
 
 Prefer to be walked through it interactively instead of picking notebooks
-yourself? Type `/master` and see
+yourself? Type `/pmexpert` and see
 [docs/mastery-guide.md](docs/mastery-guide.md) — one command teaches the
 whole curriculum, tracks progress, and picks up where you left off.
 
@@ -89,7 +89,7 @@ Use the docs hub as the canonical starting point:
 
 - [docs/README.md](docs/README.md)
 - [docs/OVERVIEW.md](docs/OVERVIEW.md) — quick-read snapshot of coverage and gaps
-- [docs/mastery-guide.md](docs/mastery-guide.md) — how to learn interactively with `/master`
+- [docs/mastery-guide.md](docs/mastery-guide.md) — how to learn interactively with `/pmexpert`
 - [docs/getting-started.md](docs/getting-started.md)
 - [docs/learning-paths.md](docs/learning-paths.md)
 - [docs/rates_credit_mortgages_roadmap.md](docs/rates_credit_mortgages_roadmap.md) — sequenced rates/credit/mortgages path, zero to proficient

@@ -43,7 +43,7 @@ Parse the argument passed to `/tutor`:
 - No args at all → ask the learner what they want to study. This skill
   is for one named topic — it doesn't pick for you or track curriculum
   position. If they want the software to choose what's next, or want
-  progress tracked across sessions, point them to `/master` instead of
+  progress tracked across sessions, point them to `/pmexpert` instead of
   reading `docs/mastery.md` here.
 
 If no specialized persona matches the topic, fall back to
