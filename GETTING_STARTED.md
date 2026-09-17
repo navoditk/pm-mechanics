@@ -8,4 +8,4 @@ intended learn-a-concept sequence, and the first milestone. This file
 deliberately does not repeat any of it, so the two cannot drift apart.
 
 Prefer an interactive walkthrough to picking notebooks yourself? Type
-`/master` — see [docs/mastery-guide.md](docs/mastery-guide.md).
+`/pmexpert` — see [docs/mastery-guide.md](docs/mastery-guide.md).

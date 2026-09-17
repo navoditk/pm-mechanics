@@ -29,7 +29,7 @@ A mechanics trainer, not a desk-grade risk system: no live market data, no
 production curve or optimization engine. The unit of work is a formula made
 concrete, unit-aware, and tested.
 
-For the interactive version — running the tests, `/master`, `/tutor`,
+For the interactive version — running the tests, `/pmexpert`, `/tutor`,
 `/pm-query` — clone the repo instead; see
 [Getting started](docs/getting-started.md).
 
@@ -38,7 +38,7 @@ For the interactive version — running the tests, `/master`, `/tutor`,
 - **[Repository overview](docs/OVERVIEW.md)** — what's here, how deep it
   goes, and what's still conceptual-only
 - **[Mastery guide](docs/mastery-guide.md)** — how the interactive
-  `/master` trainer works (only usable once you've cloned the repo)
+  `/pmexpert` trainer works (only usable once you've cloned the repo)
 - **[Learning paths](docs/learning-paths.md)** — choose a route by goal
 - **[Reference index](reference/index.md)** — every concept and
   instrument page, by topic

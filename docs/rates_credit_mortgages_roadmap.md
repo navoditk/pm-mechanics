@@ -13,8 +13,8 @@ paths](./learning-paths.md)'s Path B, expanded to the depth the "start
 from zero, reach a reasonable level of proficiency" goal actually
 requires. Use it manually (read → predict → derive → code → test →
 explain, per [getting started](./getting-started.md)) or drive it
-interactively with `/master` — see [the mastery
-guide](./mastery-guide.md); `/master` already walks this exact
+interactively with `/pmexpert` — see [the mastery
+guide](./mastery-guide.md); `/pmexpert` already walks this exact
 curriculum order.
 
 ## Before you start
@@ -229,11 +229,11 @@ credit, and (via the portfolio's risk decomposition) the rest of this
 roadmap gets applied together rather than one concept at a time.
 
 ### 4.2 Test yourself
-- `/master exam` — a multi-concept assessment ladder spanning rates,
+- `/pmexpert exam` — a multi-concept assessment ladder spanning rates,
   credit, and mortgages together (`tutors/assessment_tutor.md`)
-- `/master scenario` — walk a real `use_cases/*` workflow using
+- `/pmexpert scenario` — walk a real `use_cases/*` workflow using
   concepts you've already confirmed
-- `/master status` — check progress against the full 70-concept
+- `/pmexpert status` — check progress against the full 70-concept
   curriculum at any point
 
 ---

@@ -23,7 +23,7 @@ with code (where genuinely codeable), reference pages, notebooks, and
 verified external sources, all wired in. Also caught and fixed
 mid-mortgages-work: the Credit PR had shipped its three new reference
 pages without adding matching rows to `docs/mastery.md` or the `/tutor`
-routing table - fixed there, and `/master`'s confirmed-count level table
+routing table - fixed there, and `/pmexpert`'s confirmed-count level table
 (stale at "all 55" since before the Rates PR) updated to the true total
 of 70 concepts. Closing the loop:
 `docs/rates_credit_mortgages_roadmap.md` sequences the full path (bond
@@ -61,7 +61,7 @@ fundamental credit review - closing every gap `use_cases/index.md`'s
 - Fixed-income, optimization, integration, FX/commodities, equity, and active-management notebooks present
 - Reference pages added across portfolio foundations, optimization, risk, FICC, equity, and active management (information ratio, information coefficient, Fundamental Law, efficient frontier, downside risk, MCTE/group risk) - each with real external sources
 - `docs/OVERVIEW.md` added as a quick-read repo summary
-- `/master` rebuilt as a single self-contained trainer (lesson/quiz/scenario/exam/status modes) with `docs/mastery-guide.md` as its walkthrough
+- `/pmexpert` rebuilt as a single self-contained trainer (lesson/quiz/scenario/exam/status modes) with `docs/mastery-guide.md` as its walkthrough
 - Correctness-fix pass on `src/pm` (Black-Litterman round-trip, NaN propagation, silent solver failures, MBS domain errors)
 - Efficient frontier / tangency portfolio / min-tracking-error optimizers added; notebook 04 now actually plots a frontier (previously titled but empty)
 - Ex-post risk analytics added (realized volatility/tracking error, downside deviation, MCTE/CCTE, group risk decomposition); notebook 19 now plots the VaR/ES tail and checks a risk model's assumption against realized data

@@ -6,7 +6,7 @@
 pages yourself, at whatever pace and depth you choose. The rest of this
 page describes that path.
 
-**Interactive** — type `/master` and let it teach the curriculum to you,
+**Interactive** — type `/pmexpert` and let it teach the curriculum to you,
 one question at a time, tracking progress automatically. See the
 [mastery guide](./mastery-guide.md) for how it works. This is the faster
 way to get started if you don't want to pick notebooks and track
