@@ -21,7 +21,7 @@ Copilot CLI can also be useful for plan/review/GitHub integration once a learnin
 
 If a push or merge touched `reference/`, `curriculum/`, or `use_cases/`,
 the read-only Claude Artifact preview linked from `README.md` is now
-stale (see `AGENTS.md` rule 14). Copilot has no Artifact publishing
+stale (see `AGENTS.md` rule 17). Copilot has no Artifact publishing
 tool, so it can't refresh it directly — say so explicitly and tell the
 developer to ask Claude Code to run `scripts/build_artifact_preview.py`
 and republish it, rather than leaving the staleness unmentioned.

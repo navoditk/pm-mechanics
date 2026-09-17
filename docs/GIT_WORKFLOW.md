@@ -50,6 +50,6 @@ git pull --ff-only
 
 If the merge touched `reference/`, `curriculum/`, or `use_cases/`, the
 Claude Artifact preview linked from `README.md` is now stale — see
-`AGENTS.md` rule 14. In a Claude Code session, refresh it
+`AGENTS.md` rule 17. In a Claude Code session, refresh it
 (`scripts/build_artifact_preview.py`, then republish to the existing
 URL); in Codex or Copilot CLI, flag it to the developer instead.

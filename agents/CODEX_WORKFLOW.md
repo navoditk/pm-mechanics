@@ -32,7 +32,7 @@ After review:
 
 If this session pushed or merged a change touching `reference/`,
 `curriculum/`, or `use_cases/`, the read-only Claude Artifact preview
-linked from `README.md` is now stale (see `AGENTS.md` rule 14). Codex
+linked from `README.md` is now stale (see `AGENTS.md` rule 17). Codex
 has no Artifact publishing tool, so it can't refresh it directly — say
 so explicitly at the end of the session and tell the developer to ask
 Claude Code to run `scripts/build_artifact_preview.py` and republish it,
