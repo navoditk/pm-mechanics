@@ -22,6 +22,21 @@ and spread are all large and offsetting — knowing which is true changes
 what you'd do next (e.g. a curve loss offset by carry is very different
 from a spread loss offset by curve).
 
+## Common mistakes
+- Expecting the three effects to sum exactly to realized return. Carry,
+  curve, and spread are each approximations built on duration measures;
+  the residual is the part the first-order model does not explain, and
+  a large residual is information rather than an error to hide.
+- Double-counting carry and rolldown. Rolldown is a price effect from
+  moving along an unchanged curve and belongs in the curve term, not in
+  carry — see [Carry and rolldown](../fixed_income/carry_and_rolldown.md).
+- Attributing a spread move to credit when the benchmark curve itself
+  moved. Spread is measured *against* a curve; if the curve shifted
+  under it, part of the apparent spread effect is a curve effect.
+- Reaching for Brinson instead. Sector/security attribution assumes
+  allocation and selection are separable, which does not hold when one
+  bond carries a rate view and a credit view at once.
+
 ## Related
 - [Brinson attribution](brinson_attribution.md)
 - [Key-rate duration](../fixed_income/key_rate_duration.md)

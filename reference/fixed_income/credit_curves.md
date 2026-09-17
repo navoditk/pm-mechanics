@@ -21,6 +21,20 @@ the same way a rates curve is.
 Credit curve shape (steep vs. flat, IG vs. HY) reflects the market's view
 of near-term vs. long-term default risk for that issuer or sector.
 
+## Common mistakes
+- Interpolating spread the same way for IG and HY without comment. The
+  mechanics are identical, but HY spreads are far more convex to
+  widening, so a linear interpolation between sparse HY points
+  understates the move more than it does for IG.
+- Reading curve steepness as a pure default-timing view. Shape also
+  reflects liquidity, issuance, and index composition, not just the
+  market's term structure of default risk.
+- Treating a rating bucket as an issuer curve. A BBB sector curve is an
+  average; a specific issuer can trade far off it, and pricing an issuer
+  off the bucket hides exactly the idiosyncratic risk you are paid for.
+- Discounting with spread alone. A credit-risky bond is priced off the
+  risk-free curve *plus* the spread — see [Z-spread](z_spread.md).
+
 ## Related
 - [Curve construction](curve_construction.md)
 - [Z-spread](z_spread.md)

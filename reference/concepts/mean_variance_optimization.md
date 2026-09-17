@@ -28,6 +28,23 @@ It formalizes the tradeoff between expected return, risk, and implementation con
 ## Important limitation
 Optimal weights can be extremely sensitive to estimation error, especially in expected returns.
 
+## Common mistakes
+- Trusting the weights more than the inputs. The optimiser is exact; the
+  expected returns are not. Small changes in `mu` move the solution a
+  long way, which is the limitation stated above and the reason
+  [covariance shrinkage](covariance_shrinkage.md) and
+  [Black-Litterman](black_litterman.md) exist.
+- Dropping the `1/2` from the objective and still expecting the
+  Black-Litterman round trip to close. It only closes at `lambda / 2` —
+  pinned by
+  `tests/test_robust.py::test_market_implied_returns_round_trips_through_mean_variance`.
+- Comparing `lambda` across problems with different return units. Risk
+  aversion is only meaningful relative to the scale of `mu` and `Sigma`.
+- Treating an infeasible problem as a solver failure. This repo's
+  optimizers raise rather than returning `None` or silently relaxing a
+  constraint — an infeasible set of constraints is an answer about the
+  constraints.
+
 ## Related
 - [Efficient frontier and tangency portfolio](efficient_frontier.md)
 - [Covariance shrinkage](covariance_shrinkage.md)

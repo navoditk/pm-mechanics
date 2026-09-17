@@ -58,6 +58,21 @@ ACT/ACT, which splits a period across year boundaries. That matters for
 periods spanning a year end; the docstring says so rather than implying
 otherwise.
 
+## Common mistakes
+- Assuming a day-count convention instead of reading it from the
+  instrument's terms. `day_count_fraction` raises on an unknown
+  convention for exactly this reason — a wrong convention produces a
+  confidently wrong number rather than an obvious failure.
+- Applying the 30/360 end-of-month adjustments in the wrong order. The
+  start date collapses from the 31st to the 30th *first*; only then may
+  the end date. Reversing it changes the answer when both fall on a
+  31st, and `tests/test_settlement.py` pins the case.
+- Using this module's `ACT/ACT` where full ISDA ACT/ACT is required. This
+  is the simple year-basis approximation and does not split a period
+  across a year boundary.
+- Adding accrued interest to a price already quoted dirty, producing a
+  double count. Check which convention the quote is on before adjusting.
+
 ## Related
 - [Bond pricing](bond_pricing.md)
 - [Repo and financing](repo_and_financing.md)
