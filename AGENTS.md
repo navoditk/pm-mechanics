@@ -64,7 +64,9 @@ This is a learning-first financial analytics repository.
 17. After pushing or merging to `main` a change that touches `reference/`,
     `curriculum/`, or `use_cases/` (the content the Claude Artifact
     preview embeds), refresh and republish it: run
-    `scripts/build_artifact_preview.py`, then republish to the *same*
+    `scripts/build_artifact_preview.py` (it imports `markdown`, so it
+    needs the `docs` extra installed — `pip install -e ".[dev,docs]"`),
+    then republish to the *same*
     URL already linked from `README.md` — never a new one. This needs
     the Claude Code Artifact tool. If you're working via Codex or
     Copilot CLI, you don't have that tool — say so explicitly and tell

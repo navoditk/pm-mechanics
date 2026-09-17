@@ -17,13 +17,14 @@ Suggested prompt:
 Claude Code is the only agent in this repo's rotation with an Artifact
 publishing tool, so keeping the read-only Claude Artifact preview
 (linked from `README.md`, "Browse without cloning") in sync is a
-Claude-Code-specific duty — see `AGENTS.md` rule 14.
+Claude-Code-specific duty — see `AGENTS.md` rule 17.
 
 After pushing or merging a change to `main` that touches `reference/`,
 `curriculum/`, or `use_cases/`:
 
 1. Run `python scripts/build_artifact_preview.py` (rebuilds
-   `site_src/_artifact_preview.html`).
+   `site_src/_artifact_preview.html`). It imports `markdown`, so the
+   `docs` extra must be installed — `pip install -e ".[dev,docs]"`.
 2. Publish it with the Artifact tool, passing the **existing** artifact
    URL as `url` so it updates in place rather than creating a new one.
 3. Confirm the update landed (spot-check a page that changed) before
