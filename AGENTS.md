@@ -16,15 +16,52 @@ This is a learning-first financial analytics repository.
 6. Prefer small transparent functions over opaque frameworks.
 7. State approximation limitations for risk sensitivities.
 
+## Auditing rules
+
+8. **Enumerate the repo's convention before writing a detector for it.**
+   Never grep for the pattern you assume a repo uses — list what it
+   actually uses first, then match that. This has produced three wrong
+   answers in this repo already:
+
+   - Searching for `## Common mistakes` missed `## Common mistake`
+     (singular), `## Limitations`, `## Important limitation`, and
+     `## Approximation`, and reported 25 missing failure-mode sections
+     when the real number was 9.
+   - Searching quiz *question text* for `src/` missed that the real
+     signal is the `citation` field, and wrongly condemned a well-formed
+     quiz bank as half-misaligned.
+   - A blind `/master` → `/pmexpert` replace rewrote every `mastery.md`
+     path to `pmexperty.md`, because the old token is a substring of a
+     real filename.
+
+   The cheap habit that prevents all three:
+
+   ```bash
+   grep -rhE "^## " reference/ | sort | uniq -c | sort -rn   # what headings exist?
+   grep -rn "<old-token>" . | grep -v "<expected-context>"   # what else matches?
+   ```
+
+9. **After a repo-wide replace, grep for the corrupted token, not just
+   the new one.** `grep -rn "pmexperty"` found the damage instantly;
+   `grep -rn "/pmexpert"` looked clean and would have shipped it. A
+   token that is a substring of a filename, heading, or identifier will
+   corrupt silently and no test will catch it, because the damage is in
+   prose and paths.
+
+10. **A count in a doc is a claim; verify it against the tree.** Counts
+    in `docs/OVERVIEW.md` and skill level ladders drift whenever content
+    is added. Measure, then edit — and when a count changes, check
+    whether a skill's thresholds depend on it.
+
 ## Git / SDLC rules
 
-8. Before making repo-wide edits, inspect `git status` and the current branch.
-9. Do not make learning-feature changes directly on `main`.
-10. Keep changes scoped to the current issue/module.
-11. Run relevant tests before proposing a commit.
-12. Update `docs/PROGRESS.md` at module completion.
-13. Never commit secrets, credentials, tokens, generated virtual environments, or local `.env` files.
-14. After pushing or merging to `main` a change that touches `reference/`,
+11. Before making repo-wide edits, inspect `git status` and the current branch.
+12. Do not make learning-feature changes directly on `main`.
+13. Keep changes scoped to the current issue/module.
+14. Run relevant tests before proposing a commit.
+15. Update `docs/PROGRESS.md` at module completion.
+16. Never commit secrets, credentials, tokens, generated virtual environments, or local `.env` files.
+17. After pushing or merging to `main` a change that touches `reference/`,
     `curriculum/`, or `use_cases/` (the content the Claude Artifact
     preview embeds), refresh and republish it: run
     `scripts/build_artifact_preview.py`, then republish to the *same*
