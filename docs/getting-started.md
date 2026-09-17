@@ -34,6 +34,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 pip install -e ".[dev]"
+# add the notebook stack (matplotlib, JupyterLab) when you want to run notebooks:
+#   pip install -e ".[dev,notebooks]"
 pytest -q
 ```
 

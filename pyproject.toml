@@ -7,14 +7,17 @@ name = "pm-mechanics"
 version = "0.1.0"
 description = "A build-first portfolio-management mechanics trainer: FICC and equity analytics, derived, coded, and tested"
 requires-python = ">=3.12"
+# Only what `src/pm` actually imports. Keep it that way: anything added here
+# is installed by every consumer of this package, including ones that never
+# open a notebook. `matplotlib` and `jupyterlab` previously sat here and are
+# imported by zero library modules -- they serve the notebooks, so they moved
+# to the `notebooks` extra below. `pydantic` was declared and used nowhere at
+# all.
 dependencies = [
     "numpy>=2.0",
     "pandas>=2.2",
     "scipy>=1.14",
-    "matplotlib>=3.9",
     "cvxpy>=1.5",
-    "pydantic>=2.8",
-    "jupyterlab>=4.2",
 ]
 
 [project.optional-dependencies]
@@ -22,10 +25,19 @@ dev = [
     "pytest>=8.3",
     "ruff>=0.6",
 ]
+notebooks = [
+    "matplotlib>=3.9",
+    "jupyterlab>=4.2",
+]
 docs = [
     "mkdocs>=1.6",
     "mkdocs-material>=9.5",
     "mkdocs-jupyter>=0.25",
+    # scripts/build_artifact_preview.py imports this directly. mkdocs pulls it
+    # in anyway, but it was previously only reaching the script transitively
+    # through jupyterlab -- declaring it keeps the artifact build working
+    # independently of what else happens to be installed.
+    "markdown>=3.6",
 ]
 
 [tool.setuptools.packages.find]
