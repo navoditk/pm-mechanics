@@ -46,9 +46,12 @@ A bare topic name with no other context (e.g. someone just says "duration") duri
    | all (86) | PM Mechanics Master |
 
 2. The curriculum order is the bootcamp day order in
-   `curriculum/bootcamp_01_foundations/README.md` (Days 1–5, then
-   Extension Days 6–14) — the same concepts as `docs/mastery.md`'s rows,
-   in that order rather than table order.
+   `curriculum/bootcamp_01_foundations/README.md` (Day 0 is optional
+   orientation; then Days 1–5, then Extension Days 6–18, ending in the
+   Day 18 capstone) — the same concepts as `docs/mastery.md`'s rows, in
+   that order rather than table order. Read the day headings from that
+   file rather than trusting this range: the bootcamp has grown before,
+   and a stale range here silently truncates the curriculum.
 
 Do not narrate this setup. No "here's how this works," no file-path
 tour, no "handing off" language — just show the one-line header below
