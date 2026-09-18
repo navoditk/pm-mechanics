@@ -49,7 +49,7 @@ cleared makes a concept `weak`, all four make it `confirmed`. A concept with
 | Backtesting biases and point-in-time data | `reference/concepts/backtesting_biases.md` | untested | ···· | 0 | — |
 | Bond pricing / YTM | `reference/fixed_income/bond_pricing.md` | untested | ···· | 0 | — |
 | Accrued interest and settlement | `reference/fixed_income/accrued_interest_and_settlement.md` | untested | ···· | 0 | — |
-| Duration, DV01, convexity, KRD | `reference/fixed_income/duration.md`, `dv01.md`, `convexity.md`, `key_rate_duration.md` | confirmed | ···· | 0 | 2026-09-02, `docs/tutor_sessions/2026-09-02-fixed_income_tutor-duration.md` |
+| Duration, DV01, convexity, KRD | `reference/fixed_income/duration.md`, `dv01.md`, `convexity.md`, `key_rate_duration.md` | weak | DA·· | 45 | 2026-09-02, `docs/tutor_sessions/2026-09-02-fixed_income_tutor-duration.md` |
 | Credit spreads, spread duration | `reference/fixed_income/spread_duration.md` | untested | ···· | 0 | — |
 | Convertible bonds | `reference/fixed_income/convertible_bonds.md` | untested | ···· | 0 | — |
 | Preferred securities | `reference/fixed_income/preferred_securities.md` | untested | ···· | 0 | — |
