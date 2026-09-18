@@ -18,13 +18,15 @@ self-contained trainer with no second skill to invoke. `/pmexpert` alone
 teaches the next weak-or-untested concept in curriculum order;
 `/pmexpert quiz` runs 10 rapid multiple-choice questions (`/pmexpert quiz 20`
 for a bigger round); `/pmexpert scenario` applies already-confirmed
-concepts to a real `use_cases/*` workflow; `/pmexpert exam` runs a
+concepts to a real `use_cases/*` workflow; `/pmexpert failure` hands the
+learner a plausible wrong answer to diagnose; `/pmexpert teachback` makes
+them defend the concept to a sceptical PM; `/pmexpert exam` runs a
 multi-concept oral assessment ladder; `/pmexpert status` gives a one-line
 progress readout. It reads the same persona files and grounding
 materials `/tutor` uses, so `/tutor` remains available on its own for a
 quick one-off session on a single topic outside a mastery pass. See
 [docs/mastery-guide.md](../docs/mastery-guide.md) for a plain-language
-walkthrough of all five modes.
+walkthrough of all seven modes and the four-rung ladder behind them.
 
 All tutors should ground themselves in:
 - relevant reference pages,
@@ -32,10 +34,18 @@ All tutors should ground themselves in:
 - tests/examples,
 - curated resources.
 
-Initial tutor roles:
-- Concept Tutor
-- Fixed-Income Tutor
-- Portfolio Construction Tutor
-- Assessment Tutor
+Tutor roles:
+
+| Persona | Used by | Role |
+|---|---|---|
+| `concept_tutor.md` | `/tutor`, `/pmexpert` lesson | General adaptive teaching — rung 1 (Derive) |
+| `fixed_income_tutor.md` | `/tutor`, `/pmexpert` lesson | The same, for FICC topics |
+| `portfolio_construction_tutor.md` | `/tutor`, `/pmexpert` lesson | The same, for construction and optimization |
+| `failure_lab_tutor.md` | `/pmexpert failure` | Rung 3 (Break) — present a plausible wrong answer, make them find it |
+| `teachback_tutor.md` | `/pmexpert teachback` | Rung 4 (Explain) — play the sceptical PM |
+| `assessment_tutor.md` | `/tutor`, `/pmexpert exam` | Multi-concept oral ladder |
+
+The last three exist because a concept is not understood just because a
+lesson happened. Rungs 3 and 4 are where that claim gets tested.
 
 The tutors should adapt depth from diagnostic questions.
