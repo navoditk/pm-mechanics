@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pm-mechanics"
-version = "0.1.0"
+version = "0.2.0"
 description = "A build-first portfolio-management mechanics trainer: FICC and equity analytics, derived, coded, and tested"
 requires-python = ">=3.12"
 # Only what `src/pm` actually imports. Keep it that way: anything added here
