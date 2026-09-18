@@ -90,23 +90,35 @@ Every mode opens with one line, nothing more:
 A concept is not confirmed because a lesson happened. Every concept has
 four rungs, and `docs/mastery.md` tracks which are done:
 
-| Rung | Mode | What it proves |
-|---|---|---|
-| 1. Derive | Lesson | They can reproduce the formula and say what each term is |
-| 2. Apply | Scenario or notebook | They can use it on real numbers and read the answer |
-| 3. Break | Failure lab | They can spot where a plausible-looking use of it is wrong |
-| 4. Explain | Teach-back | They can defend it to a sceptical PM without notes |
+| Rung | Letter | Mode | Persona | What it proves |
+|---|---|---|---|---|
+| 1. Derive | `D` | Lesson | per `/tutor`'s routing table | They can reproduce the formula and say what each term is |
+| 2. Apply | `A` | Scenario or notebook | — | They can use it on real numbers and read the answer |
+| 3. Break | `B` | Failure lab | `tutors/failure_lab_tutor.md` | They can spot where a plausible-looking use of it is wrong |
+| 4. Explain | `E` | Teach-back | `tutors/teachback_tutor.md` | They can defend it to a sceptical PM without notes |
 
-Rungs 1 and 2 make a concept `weak`. All four make it `confirmed`. Run
-them in order for a new concept; jump straight to the missing rung when
-returning to a `weak` one — never restart at rung 1 for a concept that
-already cleared it.
+**Recording a rung.** `docs/mastery.md`'s `Rungs` column is four
+characters, one per rung in that order: the letter when cleared, `·`
+when not. `····` untouched, `DA··` derived and applied, `DABE`
+complete. `D·B·` is legal and means derived and broken, never applied
+or explained. The full key is in `docs/mastery.md`'s own header — read
+it there rather than reconstructing it.
 
-The reference page is the floor, not the ceiling. It gives rung 1 and
-usually one gotcha for rung 3; the notebook carries rung 2, and rung 4
-is spoken, not written. If a concept's page has no obvious failure mode,
-build rung 3 from its tests — a test that exists to pin an edge case is
-a failure lab already written down.
+Status follows from the rungs rather than being set separately: any
+rung cleared makes a concept `weak`, all four make it `confirmed`,
+`····` is `untested`. Never write a status that contradicts the rungs.
+
+Run the rungs in order for a new concept; jump straight to the missing
+rung when returning to a `weak` one — never restart at rung 1 for a
+concept that already cleared it. `/pmexpert status` should say which
+rung is next, not just a count.
+
+The reference page is the floor, not the ceiling. It gives rung 1, and
+its `Common mistakes` section gives rung 3 — every concept page now has
+one, so a failure lab is always constructible. The notebook carries
+rung 2, and rung 4 is spoken, not written. Where a page's mistakes are
+thin, its tests are the better source: a test that exists to pin an
+edge case is a failure lab already written down.
 
 ## Lesson mode
 
@@ -127,11 +139,14 @@ a failure lab already written down.
    - ground every explanation in the actual reference page / notebook /
      test, not general knowledge
 4. At the end (learner says they're done, or the exchange naturally
-   concludes): log a session file to `docs/tutor_sessions/`, and update
-   the concept's row in `docs/mastery.md` (`confirmed` / `weak` /
-   `untested`, with today's date and a link to the log). Do this without
-   announcing the file paths in the reply — just do it, then tell the
-   learner in plain language what's now confirmed or still shaky.
+   concludes): log a session file to `docs/tutor_sessions/`, then update
+   the concept's row in `docs/mastery.md` — set the first character of
+   `Rungs` to `D` if they can now reproduce the formula and name its
+   terms, award the lesson XP, and let `Status` follow from the rungs
+   rather than setting it by hand. Add today's date and a link to the
+   log. Do this without announcing the file paths in the reply — just do
+   it, then tell the learner in plain language which rung they just
+   cleared and which is next.
 5. Ask once: continue to the next concept, or stop here. Don't chain
    another lesson unprompted.
 
@@ -177,17 +192,24 @@ grounding. One question per concept, full stop.
 2. Walk it step by step, having the learner do the actual reasoning and
    (where relevant) call the real `src/pm` function — same
    never-give-the-answer-first discipline as Lesson mode.
-3. No `docs/mastery.md` update — this is applying concepts, not testing
-   a single one; see `docs/tutor_sessions/` only if a real gap surfaces
-   mid-scenario, in which case treat that concept as `weak` and note it.
+3. A scenario is how rung 2 is cleared, so it does update
+   `docs/mastery.md` — but only for concepts the learner actually applied
+   themselves during the walkthrough, and only those already at `D`.
+   Set the second character of their `Rungs` to `A` and award the
+   scenario XP once for the session, not once per concept touched.
+   Concepts the scenario merely mentioned in passing get nothing. If a
+   real gap surfaces mid-scenario, clear that concept's later rungs back
+   to `·` and say why in the session log — a gap found under application
+   is evidence the earlier rung was granted too easily.
 
 ## Failure lab mode (rung 3)
 
 The rung most learners skip, and the one that separates recognising a
 formula from understanding it.
 
-1. Take the current concept (or `/pmexpert failure <topic>`). Read its
-   reference page and its tests.
+1. Take the current concept (or `/pmexpert failure <topic>`). Read
+   `tutors/failure_lab_tutor.md` and follow it, then read the concept's
+   reference page (its `Common mistakes` section especially) and its tests.
 2. Present a short, **plausible** worked example that reaches a wrong
    answer — plausible is the whole point. Draw the flaw from something
    real: an assumption the page states (duration assumes a small
@@ -200,23 +222,25 @@ formula from understanding it.
 4. When they find it, ask the follow-up that matters: *when would this
    shortcut be fine?* Most of these are wrong at scale and fine in the
    small, and knowing which is the real skill.
-5. Mark rung 3 done in `docs/mastery.md` and award XP. A failure lab they
-   solved only after being told the answer does not count — say so
-   plainly and offer a different one.
+5. Set the third character of the concept's `Rungs` to `B` and award the
+   XP. A failure lab they solved only after being told the answer does
+   not count — say so plainly and offer a different one.
 
 ## Teach-back mode (rung 4)
 
-1. Ask them to explain the concept as if to a PM who is sharp but has
-   not seen it — no notes, no reading from the page.
+1. Read `tutors/teachback_tutor.md` and follow it. Ask them to explain the
+   concept as if to a PM who is sharp but has not seen it — no notes, no
+   reading from the page.
 2. Play that PM. Ask the two or three questions such a person actually
    asks: what does this assume, when does it break, what would you use
    instead. Push on vagueness; "it measures risk" is not an answer.
 3. Score it: can they state the definition, the units, one limitation,
    and one real use? All four is a pass.
-4. On a pass, mark rung 4 and — if rungs 1–3 are done — promote the
-   concept to `confirmed` with the +50. On a miss, name the specific gap
-   and leave it `weak`. Do not pass someone out of politeness; the count
-   is worth nothing if it is generous.
+4. On a pass, set the fourth character of `Rungs` to `E`. If that makes
+   the row `DABE`, promote the concept to `confirmed` and award the +50.
+   On a miss, name the specific gap and leave the character `·`. Do not
+   pass someone out of politeness; the count is worth nothing if it is
+   generous.
 
 ## Exam mode
 

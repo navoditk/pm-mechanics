@@ -18,7 +18,7 @@ Type:
 That's it. It reads your current progress, tells you where you are in one
 line, and asks the next question.
 
-## The five ways to use it
+## The seven ways to use it
 
 | Command | What it does | When to use it |
 |---|---|---|
@@ -26,6 +26,8 @@ line, and asks the next question.
 | `/pmexpert quiz` | 10 rapid multiple-choice questions across different concepts, right/wrong revealed immediately | A fast gut-check across many topics, or a warm-up before a lesson |
 | `/pmexpert quiz 20` | Same, a bigger round | When you have more time and want broader coverage |
 | `/pmexpert scenario` | Applies concepts you've already confirmed to a real portfolio workflow | Once you've got some concepts confirmed and want to see them used together, not just recited |
+| `/pmexpert failure` | Hands you a plausible-looking worked example that reaches a **wrong** answer, and asks you to find the flaw | The rung most people skip. Recognising a formula and spotting its misuse are different skills |
+| `/pmexpert teachback` | You explain the concept; it plays a sceptical PM and probes what you assumed, when it breaks, what you'd use instead | Last step before a concept counts as confirmed — if you can't defend it cold, you don't have it yet |
 | `/pmexpert exam` | A tougher, ladder-style oral check across several concepts at once, narrowing in on weak spots | As a checkpoint after finishing a phase (e.g. all of fixed income) |
 | `/pmexpert status` | Just reports how far along you are — nothing else | Any time you want a quick read without starting a session |
 | `/pmexpert <topic>` (e.g. `/pmexpert duration`) | Jumps straight to a specific concept instead of the default order | When you already know what you want to work on |
@@ -58,12 +60,40 @@ instead.
    It resumes exactly where you left off. No separate command, no notes
    to keep yourself.
 
+## What "confirmed" means — the four rungs
+
+A concept isn't confirmed because you sat through a lesson. Each one has
+four rungs, and you clear them with different modes:
+
+| Rung | Cleared by | What it proves |
+|---|---|---|
+| **D**erive | `/pmexpert` | You can reproduce the formula and say what each term is |
+| **A**pply | `/pmexpert scenario`, or a notebook | You can use it on real numbers and read the answer |
+| **B**reak | `/pmexpert failure` | You can spot where a plausible-looking use of it is wrong |
+| **E**xplain | `/pmexpert teachback` | You can defend it to a sceptical PM without notes |
+
+Any rung cleared makes a concept *weak*; all four make it *confirmed*.
+You don't restart — returning to a half-done concept picks up at the
+missing rung.
+
+The deliberate part is that rung 3 is hard to fake. The failure labs are
+built from things this repo actually states — an assumption on the
+reference page, a convention the code refuses to guess, an edge case a
+test exists to pin — never an invented mistake. And a lab you only
+solved after being told the answer doesn't count.
+
 ## How it remembers your progress
 
 Your status lives in `docs/mastery.md`, updated automatically at the end
-of every lesson, quiz, or exam. You never need to touch that file
-yourself, but it's plain markdown — open it any time you're curious
-exactly what's confirmed versus still shaky.
+of every session. Each concept shows its rungs as four characters —
+`····` untouched, `DA··` derived and applied, `DABE` complete — plus an
+XP total. You never need to touch that file yourself, but it's plain
+markdown, and its header explains the notation.
+
+XP and the confirmed count move differently on purpose. XP measures work
+done; the count measures curriculum covered. Re-testing a shaky concept
+earns XP without changing the count, which is exactly the progress the
+old count-only readout made invisible.
 
 ## A few tips
 
