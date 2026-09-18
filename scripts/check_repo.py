@@ -1,8 +1,12 @@
 import json
 import re
+import sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(root / "scripts"))
+
+from mastery_rules import parse_rungs, status_for
 
 required = [
     "README.md","ROADMAP.md","LEARNING_PATHS.md","AGENTS.md",
@@ -28,8 +32,6 @@ def check_mastery():
     while recording that nothing had been demonstrated.
     """
     path = root / "docs" / "mastery.md"
-    # position -> the only letter legal there; "·" is always legal
-    RUNGS = ("D", "A", "B", "E")
     errors = []
     rows = 0
 
@@ -43,17 +45,13 @@ def check_mastery():
         rows += 1
         concept, pages, status, rungs, xp, _ = cells
 
-        if len(rungs) != len(RUNGS):
-            errors.append(f"{concept}: Rungs must be {len(RUNGS)} characters, found {rungs!r}")
+        try:
+            parse_rungs(rungs)
+        except ValueError as error:
+            errors.append(f"{concept}: {error}")
             continue
-        for i, (got, want) in enumerate(zip(rungs, RUNGS, strict=True), 1):
-            if got not in (want, "·"):
-                errors.append(
-                    f"{concept}: Rungs position {i} must be {want!r} or '·', found {got!r}"
-                )
 
-        cleared = sum(1 for c in rungs if c != "·")
-        expected = "untested" if cleared == 0 else "confirmed" if cleared == len(RUNGS) else "weak"
+        expected = status_for(rungs)
         if status != expected:
             errors.append(
                 f"{concept}: Rungs {rungs!r} imply status {expected!r}, found {status!r}"
