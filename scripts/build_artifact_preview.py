@@ -109,10 +109,7 @@ def rewrite_xrefs(html_text, from_ref_key, from_root=None):
         # checking TITLES alone sent every link to it out to GitHub when it
         # could navigate in place.
         if reference_key in STANDALONE_PAGE_IDS:
-            return (
-                f'<a href="#{STANDALONE_PAGE_IDS[reference_key]}"'
-                f' class="xref">{label}</a>'
-            )
+            return f'<a href="#{STANDALONE_PAGE_IDS[reference_key]}" class="xref">{label}</a>'
 
         resolved = ROOT / target
         if resolved.exists():
@@ -188,9 +185,7 @@ def build_pages():
                 "section": "Use Cases",
                 "subsection": None,
                 "title": title,
-                "html": rewrite_xrefs(
-                    md_to_html(strip_h1(raw)), "README.md", f"use_cases/{slug}"
-                ),
+                "html": rewrite_xrefs(md_to_html(strip_h1(raw)), "README.md", f"use_cases/{slug}"),
             }
         )
 

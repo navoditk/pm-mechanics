@@ -7,7 +7,6 @@ assert that every link resolves to something, by one of the three routes the
 builder is allowed to take.
 """
 
-import json
 import re
 import sys
 from pathlib import Path
@@ -19,12 +18,11 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 markdown = pytest.importorskip("markdown", reason="artifact preview needs the docs extra")
 
-from build_artifact_preview import (  # noqa: E402
+from build_artifact_preview import (
     REPOSITORY_URL,
     build_pages,
     rewrite_xrefs,
 )
-
 
 # --- the three outcomes a link may have --------------------------------------
 
@@ -126,8 +124,6 @@ def test_the_artifact_covers_every_reference_page_the_readme_claims():
 
     ids = {p["id"] for p in build_pages()}
     missing = [
-        key
-        for key in TITLES
-        if "ref-" + key.replace(".md", "").replace("/", "-") not in ids
+        key for key in TITLES if "ref-" + key.replace(".md", "").replace("/", "-") not in ids
     ]
     assert not missing, f"reference pages absent from the artifact: {missing}"
