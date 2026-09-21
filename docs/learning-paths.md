@@ -99,13 +99,15 @@ This route focuses on the agent layer: tool schemas, grounded answers, evaluatio
 Start with:
 
 ```
-/pmexpert
+pmexpert
 ```
 
-This is the odd one out among the paths above: instead of choosing where
-to start, `/pmexpert` chooses for you — it teaches the next concept you
-haven't mastered, in curriculum order, one question at a time, and
-remembers your progress automatically. Use `/pmexpert quiz` for a fast
+Say that in Claude Code, GitHub Copilot, or Codex — all three work.
+
+This is the odd one out among the paths above: instead of choosing where to
+start, `pmexpert` chooses for you. It teaches the next concept you haven't
+mastered, in curriculum order, one question at a time, and remembers your
+progress automatically. Use `/pmexpert quiz` for a fast
 multiple-choice check, `/pmexpert scenario` to apply confirmed concepts to
 a real use case, or `/pmexpert exam` for a tougher multi-concept checkpoint.
 

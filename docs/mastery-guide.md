@@ -1,22 +1,31 @@
-# Learning This Repo with /pmexpert
+# Learning This Repo with pmexpert
 
 Everything else in this repo assumes you're working through notebooks and
-reference pages by hand. `/pmexpert` is the interactive alternative: one
-command that teaches the curriculum to you, one question at a time,
-adapting to your answers, and remembering exactly where you left off. You
-don't need to track progress yourself or know which notebook comes next —
-just type it and go.
+reference pages by hand. `pmexpert` is the interactive alternative: one
+skill that teaches the curriculum to you, one question at a time, adapting
+to your answers, and remembering exactly where you left off. You don't need
+to track progress yourself or know which notebook comes next — just start it
+and go.
 
 ## Start here
 
-Type:
+Open this checkout in **Claude Code, GitHub Copilot, or Codex** and say:
 
 ```
-/pmexpert
+pmexpert
 ```
 
 That's it. It reads your current progress, tells you where you are in one
 line, and asks the next question.
+
+**All three tools work.** Each carries a thin discovery loader —
+`.claude/skills/`, `.github/skills/`, `.agents/skills/` — pointing at one
+canonical package in `skills/pmexpert/`, so the lesson is identical whichever
+you use.
+
+This page writes the modes below as `/pmexpert quiz`, `/pmexpert scenario`
+and so on. The leading slash is Claude Code's shorthand; in any tool, saying
+`pmexpert quiz` does the same thing. What matters is the mode name after it.
 
 ## The seven ways to use it
 

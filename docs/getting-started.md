@@ -6,11 +6,16 @@
 pages yourself, at whatever pace and depth you choose. The rest of this
 page describes that path.
 
-**Interactive** — type `/pmexpert` and let it teach the curriculum to you,
-one question at a time, tracking progress automatically. See the
+**Interactive** — open this checkout in Claude Code, GitHub Copilot, or
+Codex, say `pmexpert`, and let it teach the curriculum to you one question
+at a time, tracking progress automatically. All three tools work. See the
 [mastery guide](./mastery-guide.md) for how it works. This is the faster
 way to get started if you don't want to pick notebooks and track
 completion by hand.
+
+**Browse** — `pm-mechanics topics`, `pm-mechanics reference <page>`, and
+`pm-mechanics progress` navigate the library from a terminal, read-only,
+with no model or API key needed.
 
 Both use the same underlying material (reference pages, notebooks,
 tests) — pick whichever fits how you like to learn, or mix the two.
