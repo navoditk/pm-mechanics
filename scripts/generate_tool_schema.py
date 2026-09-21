@@ -4,6 +4,7 @@ agent tool catalog. See reference/concepts/agentic_pm_analytics.md.
 
 Run: python scripts/generate_tool_schema.py > docs/tool_schema.json
 """
+
 import inspect
 import json
 import pkgutil

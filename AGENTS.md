@@ -2,6 +2,29 @@
 
 This is a learning-first financial analytics repository.
 
+## How this file reaches each tool
+
+This is the only place the rules below are maintained. Three thin pointers
+exist so every surface finds them, and none of them should ever carry content:
+
+- **`CLAUDE.md`** imports this file. Claude Code reads `AGENTS.md` directly in
+  most sessions, but falls back to `CLAUDE.md` alone on Amazon Bedrock or
+  another third-party provider, with telemetry disabled, under
+  `disableAllHooks`/`allowManagedHooksOnly`, before v2.1.277, and on the first
+  session after an upgrade. Hard rule 1 guards 276 markers in this repository,
+  so it must not be the rule that silently goes missing.
+- **`.github/copilot-instructions.md`** points here, for Copilot surfaces that
+  look in `.github/` first.
+- **`.claude/skills/`, `.github/skills/`, `.agents/skills/`** are discovery
+  loaders for Claude Code, Copilot and Codex respectively. Each is eleven
+  lines and points at the canonical package under `skills/`. Learning content
+  lives in `skills/<name>/SKILL.md` and nowhere else.
+
+`pm-mechanics` is the console script: `topics`, `reference` and `progress` for
+navigating, `check` for the gates CI runs. The interactive teaching stays in
+the skills -- say `pmexpert`, `tutor`, or `pm-query` -- because deriving a
+formula with a learner is a conversation, not a command.
+
 ## Hard rules
 
 1. Never fill `MANUAL FIRST`, `PREDICT`, `HAND CALCULATION`, or `ORAL CHECK` sections unless the user explicitly says they completed or want the answer.

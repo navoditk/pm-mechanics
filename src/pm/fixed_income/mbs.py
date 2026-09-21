@@ -21,6 +21,7 @@ def mortgage_amortization_schedule(balance, annual_rate, months):
     ending = beginning - principal
     return beginning, principal, interest, ending
 
+
 def single_monthly_mortality(cpr):
     """Convert an annualized CPR to a monthly prepayment rate (SMM).
 
@@ -34,6 +35,7 @@ def single_monthly_mortality(cpr):
         raise ValueError("cpr must be in [0, 1).")
     return 1 - (1 - cpr) ** (1 / 12)
 
+
 def psa_cpr(month, psa_multiplier=1.0):
     """CPR implied by the PSA benchmark: ramps linearly from 0% to
     6%*psa_multiplier over the first 30 months, then flat.
@@ -42,6 +44,7 @@ def psa_cpr(month, psa_multiplier=1.0):
     so this composes with apply_prepayment's vectorized month loop).
     """
     return 0.06 * psa_multiplier * np.minimum(month, 30) / 30
+
 
 def apply_prepayment(beginning_balance, scheduled_principal, smm):
     """Overlay a prepayment assumption on a scheduled amortization.
@@ -57,6 +60,7 @@ def apply_prepayment(beginning_balance, scheduled_principal, smm):
     ending_balance = beginning_balance - total_principal
     return total_principal, ending_balance
 
+
 def refinancing_incentive_cpr(wac, market_rate, base_cpr=0.06, sensitivity=2.0):
     """Simple behavioral prepayment model: CPR rises with refinancing
     incentive (wac - market_rate) when rates fall, and floors at base_cpr
@@ -71,10 +75,12 @@ def refinancing_incentive_cpr(wac, market_rate, base_cpr=0.06, sensitivity=2.0):
     incentive = np.maximum(0.0, wac - market_rate)
     return np.minimum(base_cpr + sensitivity * incentive, 0.999)
 
+
 def weighted_average_life(times, principal_payments):
     times = np.asarray(times, dtype=float)
     principal_payments = np.asarray(principal_payments, dtype=float)
     return float(np.sum(times * principal_payments) / np.sum(principal_payments))
+
 
 def effective_duration(price_down, price_up, price_base, bump_decimal):
     """Numerical (bump-and-reprice) duration - the right tool when price
@@ -82,6 +88,7 @@ def effective_duration(price_down, price_up, price_base, bump_decimal):
     changes with rates. Contrast with modified_duration (closed-form).
     """
     return (price_down - price_up) / (2 * price_base * bump_decimal)
+
 
 def dollar_roll_implied_financing_rate(coupon_income, drop_income, near_amount, horizon_years):
     """Annualized financing rate implied by a TBA dollar roll: sell MBS for

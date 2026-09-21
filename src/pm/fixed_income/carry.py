@@ -9,6 +9,7 @@ def carry_return(coupon_income, price, financing_rate, horizon_years=1.0):
     running_yield = coupon_income / price
     return (running_yield - financing_rate) * horizon_years
 
+
 def rolldown_return(modified_duration, current_yield, rolled_yield):
     """Price return from a bond 'sliding down' an unchanged yield curve as
     time passes: after horizon_years its remaining maturity is shorter, so
@@ -21,8 +22,16 @@ def rolldown_return(modified_duration, current_yield, rolled_yield):
     """
     return -modified_duration * (rolled_yield - current_yield)
 
-def carry_and_rolldown(coupon_income, price, financing_rate, modified_duration,
-                        current_yield, rolled_yield, horizon_years=1.0):
+
+def carry_and_rolldown(
+    coupon_income,
+    price,
+    financing_rate,
+    modified_duration,
+    current_yield,
+    rolled_yield,
+    horizon_years=1.0,
+):
     """Total expected return from carry and rolldown combined - the return
     a bond position earns purely from the passage of time, assuming the
     yield curve doesn't move at all. See

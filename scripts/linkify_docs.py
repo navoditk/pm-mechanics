@@ -10,6 +10,7 @@ Run: python scripts/linkify_docs.py
 Then rebuild both docs surfaces to verify: build_docs_site.py + mkdocs
 build --strict, and build_artifact_preview.py.
 """
+
 import os
 import re
 from pathlib import Path
@@ -87,7 +88,10 @@ RELATED = {
     "concepts/liability_driven_investing.md": [
         ("Duration, DV01", "fixed_income/duration.md"),
         ("Performance measurement", "concepts/performance_measurement.md"),
-        ("Strategic and tactical asset allocation", "concepts/strategic_and_tactical_asset_allocation.md"),
+        (
+            "Strategic and tactical asset allocation",
+            "concepts/strategic_and_tactical_asset_allocation.md",
+        ),
     ],
     "concepts/mean_variance_optimization.md": [
         ("Efficient frontier and tangency portfolio", "concepts/efficient_frontier.md"),
@@ -222,7 +226,10 @@ RELATED = {
     "derivatives/black_scholes_and_greeks.md": [
         ("Put-call parity", "derivatives/put_call_parity.md"),
         ("Implied volatility", "derivatives/implied_volatility.md"),
-        ("Options on forwards and rates options", "derivatives/options_on_forwards_and_rates_options.md"),
+        (
+            "Options on forwards and rates options",
+            "derivatives/options_on_forwards_and_rates_options.md",
+        ),
         ("Option strategies", "derivatives/option_strategies.md"),
     ],
     "derivatives/put_call_parity.md": [
@@ -475,7 +482,10 @@ RELATED = {
         ("ESG and sustainable investing", "alternatives/esg_and_sustainable_investing.md"),
         ("Leveraged loans", "fixed_income/leveraged_loans.md"),
         ("Liability-driven investing", "concepts/liability_driven_investing.md"),
-        ("Strategic and tactical asset allocation", "concepts/strategic_and_tactical_asset_allocation.md"),
+        (
+            "Strategic and tactical asset allocation",
+            "concepts/strategic_and_tactical_asset_allocation.md",
+        ),
     ],
     "alternatives/esg_and_sustainable_investing.md": [
         ("Alternative investments overview", "alternatives/alternatives_overview.md"),
@@ -509,10 +519,10 @@ def rewrite_related_section(src_key):
     heading_re = re.compile(r"^## Related\s*\n", re.MULTILINE)
     m = heading_re.search(text)
     if m:
-        rest = text[m.end():]
+        rest = text[m.end() :]
         next_heading = re.search(r"^## ", rest, re.MULTILINE)
-        tail = rest[next_heading.start():] if next_heading else ""
-        new_text = text[:m.start()] + new_block + ("\n" + tail if tail else "")
+        tail = rest[next_heading.start() :] if next_heading else ""
+        new_text = text[: m.start()] + new_block + ("\n" + tail if tail else "")
     else:
         new_text = text.rstrip("\n") + "\n\n" + new_block
 
@@ -542,9 +552,7 @@ def rewrite_reference_index():
             out.append(f"- [{title}]({target_key})")
         if not subsection:
             out.append("")
-    out.append(
-        "\nMore pages should be added continuously using `templates/CONCEPT_TEMPLATE.md`.\n"
-    )
+    out.append("\nMore pages should be added continuously using `templates/CONCEPT_TEMPLATE.md`.\n")
     path.write_text("\n".join(out).replace("\n\n\n", "\n\n"))
 
 
@@ -620,8 +628,10 @@ def main():
     rewrite_curriculum_notebooks()
     rewrite_use_cases_index()
 
-    print(f"Linkified {len(updated)} reference pages, reference/index.md, "
-          f"curriculum notebooks, and use_cases/index.md")
+    print(
+        f"Linkified {len(updated)} reference pages, reference/index.md, "
+        f"curriculum notebooks, and use_cases/index.md"
+    )
 
 
 if __name__ == "__main__":

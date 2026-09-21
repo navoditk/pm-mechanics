@@ -9,6 +9,7 @@ regenerate with this script, never edit site_src/ directly.
 Run: python scripts/build_docs_site.py
 Then: mkdocs build   (or mkdocs serve, for local preview)
 """
+
 import shutil
 from pathlib import Path
 
@@ -16,7 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 STAGE = ROOT / "site_src"
 
 TOP_LEVEL_FILES = ["README.md", "ROADMAP.md", "AGENTS.md", "SDLC.md", "SETUP.md"]
-TOP_LEVEL_DIRS = ["reference", "curriculum", "notebooks", "use_cases", "tutors", "resources", "docs"]
+TOP_LEVEL_DIRS = [
+    "reference",
+    "curriculum",
+    "notebooks",
+    "use_cases",
+    "tutors",
+    "resources",
+    "docs",
+]
 
 HOMEPAGE = """# PM Mechanics
 

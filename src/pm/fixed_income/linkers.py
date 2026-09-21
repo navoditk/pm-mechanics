@@ -5,11 +5,13 @@ def breakeven_inflation(nominal_yield, real_yield):
     """
     return nominal_yield - real_yield
 
+
 def tips_index_ratio(cpi_reference_current, cpi_reference_base):
     """TIPS index ratio: how much a TIPS's principal has grown from
     inflation since issuance. index_ratio = CPI_now / CPI_at_issuance.
     """
     return cpi_reference_current / cpi_reference_base
+
 
 def tips_inflation_adjusted_principal(original_principal, index_ratio):
     """A TIPS's current (inflation-adjusted) principal - what its real
@@ -17,6 +19,7 @@ def tips_inflation_adjusted_principal(original_principal, index_ratio):
     original face value.
     """
     return original_principal * index_ratio
+
 
 def tips_coupon_payment(real_coupon_rate, inflation_adjusted_principal, frequency=2):
     """A TIPS coupon payment: the fixed real coupon rate applied to the

@@ -13,6 +13,7 @@ def shrink_covariance(sample_covariance, shrinkage):
     target = np.diag(np.diag(cov))
     return shrinkage * target + (1 - shrinkage) * cov
 
+
 def market_implied_returns(risk_aversion, covariance, market_weights):
     """Reverse-optimize the market-implied (equilibrium) expected returns
     that would make market_weights optimal - the Black-Litterman prior.
@@ -27,7 +28,10 @@ def market_implied_returns(risk_aversion, covariance, market_weights):
     w = np.asarray(market_weights, dtype=float)
     return risk_aversion * cov @ w
 
-def black_litterman_posterior(prior_returns, covariance, view_matrix, view_returns, view_uncertainty, tau=0.05):
+
+def black_litterman_posterior(
+    prior_returns, covariance, view_matrix, view_returns, view_uncertainty, tau=0.05
+):
     """Combine a prior (e.g. from market_implied_returns) with investor
     views (P, Q, Omega) into posterior expected returns and covariance.
 
@@ -55,6 +59,7 @@ def black_litterman_posterior(prior_returns, covariance, view_matrix, view_retur
     posterior_mean = posterior_cov @ (tau_sigma_inv @ prior + P.T @ omega_inv @ Q)
     return posterior_mean, posterior_cov
 
+
 def risk_parity_weights(covariance):
     """Long-only weights giving each asset equal risk contribution, via the
     standard convex reformulation (Maillard, Roncalli, Teiletche 2010):
@@ -66,6 +71,7 @@ def risk_parity_weights(covariance):
     objective = cp.Minimize(0.5 * cp.quad_form(w, cov) - cp.sum(cp.log(w)))
     raw = solved_weights(cp.Problem(objective), w)
     return raw / raw.sum()
+
 
 def scenario_robust_weights(scenario_returns, long_only=True):
     """Minimax (robust) portfolio: maximize the worst-case return across a

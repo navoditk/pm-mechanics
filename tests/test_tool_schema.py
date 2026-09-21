@@ -9,7 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_committed_tool_schema_is_up_to_date():
     result = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "generate_tool_schema.py")],
-        capture_output=True, text=True, check=True, cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=ROOT,
     )
     generated = json.loads(result.stdout)
     committed = json.loads((ROOT / "docs" / "tool_schema.json").read_text())
@@ -17,6 +20,7 @@ def test_committed_tool_schema_is_up_to_date():
         "docs/tool_schema.json is stale - regenerate with "
         "`python scripts/generate_tool_schema.py > docs/tool_schema.json`"
     )
+
 
 def test_tool_schema_covers_every_public_pm_module():
     schema = json.loads((ROOT / "docs" / "tool_schema.json").read_text())

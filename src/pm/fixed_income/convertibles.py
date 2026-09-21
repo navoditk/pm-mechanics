@@ -4,6 +4,7 @@ def conversion_value(conversion_ratio, stock_price):
     """
     return conversion_ratio * stock_price
 
+
 def conversion_premium(bond_price, conv_value):
     """How much richer the convertible trades than its immediate
     conversion value, as a fraction: (bond_price - conv_value) / conv_value.

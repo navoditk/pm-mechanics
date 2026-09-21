@@ -12,17 +12,21 @@ def simple_returns(prices: pd.Series | pd.DataFrame):
     """
     return prices / prices.shift(1) - 1
 
+
 def log_returns(prices: pd.Series | pd.DataFrame):
     """Log returns. First element is NaN by construction, as above."""
     return np.log(prices / prices.shift(1))
+
 
 def portfolio_return(asset_returns, weights):
     r = np.asarray(asset_returns, dtype=float)
     w = np.asarray(weights, dtype=float)
     return float(w @ r)
 
+
 def cumulative_return(returns):
     return float(np.prod(1 + finite_array(returns)) - 1)
+
 
 def money_weighted_return(cash_flows, times):
     """Money-weighted return (dollar-weighted return / IRR): the constant
@@ -44,8 +48,10 @@ def money_weighted_return(cash_flows, times):
     Descartes' rule of signs) but is not guaranteed for cash flows that
     change sign more than once.
     """
+
     def npv(rate):
         return sum(cf / (1 + rate) ** t for cf, t in zip(cash_flows, times))
+
     return float(brentq(npv, -0.99, 5.0))
 
 
@@ -73,6 +79,7 @@ def realized_volatility(returns, periods_per_year=12):
     """
     r = finite_array(returns, min_size=2)
     return float(r.std(ddof=1) * np.sqrt(periods_per_year))
+
 
 def downside_deviation(returns, target=0.0, periods_per_year=12):
     """Semi-deviation below `target` (Sortino's risk measure): like

@@ -6,6 +6,7 @@ def funded_ratio(assets, liabilities):
     """
     return assets / liabilities
 
+
 def surplus(assets, liabilities):
     """Plan assets minus plan liabilities, in currency terms - the
     absolute counterpart to funded_ratio's ratio framing. Positive =

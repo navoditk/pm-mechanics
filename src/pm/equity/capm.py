@@ -9,11 +9,14 @@ def beta(stock_returns, market_returns):
     variance = np.var(market, ddof=1)
     return float(covariance / variance)
 
+
 def equity_risk_premium(expected_market_return, risk_free_rate):
     return expected_market_return - risk_free_rate
 
+
 def capm_expected_return(risk_free_rate, beta_value, equity_risk_premium_value):
     return risk_free_rate + beta_value * equity_risk_premium_value
+
 
 def jensens_alpha(realized_return, risk_free_rate, beta_value, market_return):
     """Realized return in excess of what CAPM would have predicted -

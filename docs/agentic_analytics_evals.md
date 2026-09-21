@@ -1,6 +1,6 @@
 # Agentic Analytics Evals
 
-Manually-run checklist for `/pm-query` (`.claude/skills/pm-query/SKILL.md`).
+Manually-run checklist for `/pm-query` (`skills/pm-query/SKILL.md`).
 There is no automated harness for skill-routing behavior — that needs a
 live agent test rig this repo doesn't have — so this stays an honest,
 human-runnable checklist rather than a fake `pytest` suite. Each row's

@@ -6,7 +6,7 @@ they are where a silent arithmetic bug would sit unnoticed — the level table
 shipped once with a gap where 85 confirmed mapped to no level at all.
 
 The last two tests are the ones that earn their keep: they assert the prose
-tables in `.claude/skills/pmexpert/SKILL.md` still match this module. The
+tables in `skills/pmexpert/SKILL.md` still match this module. The
 skill is the copy a human edits, so that is where drift starts.
 """
 
@@ -36,18 +36,17 @@ from mastery_rules import (
     status_for,
 )
 
-SKILL = (ROOT / ".claude" / "skills" / "pmexpert" / "SKILL.md").read_text()
+SKILL = (ROOT / "skills" / "pmexpert" / "SKILL.md").read_text()
 
 
 # --- status derivation -------------------------------------------------------
+
 
 def test_status_is_derived_for_every_possible_rung_combination():
     """All 16 combinations, not a sampled few — the whole domain is small."""
     for flags in product([False, True], repeat=len(RUNGS)):
         rungs = format_rungs(flags)
-        expected = (
-            "untested" if not any(flags) else "confirmed" if all(flags) else "weak"
-        )
+        expected = "untested" if not any(flags) else "confirmed" if all(flags) else "weak"
         assert status_for(rungs) == expected, rungs
 
 
@@ -67,6 +66,7 @@ def test_only_all_four_confirms():
 
 # --- parsing and formatting --------------------------------------------------
 
+
 @pytest.mark.parametrize("bad", ["", "DAB", "DABEE", "DA·", "XABE", "dabe", "D-B-"])
 def test_malformed_rung_strings_raise(bad):
     with pytest.raises(ValueError):
@@ -85,6 +85,7 @@ def test_parse_and_format_round_trip():
 
 
 # --- transitions -------------------------------------------------------------
+
 
 def test_clearing_is_idempotent_so_repeating_a_rung_earns_nothing():
     once = clear_rung(UNTOUCHED, "B")
@@ -117,6 +118,7 @@ def test_next_rung_resumes_at_the_gap_rather_than_restarting():
 
 
 # --- level ladder ------------------------------------------------------------
+
 
 def test_level_bands_are_contiguous_with_no_unreachable_count():
     """The shipped bug: a banding that left 85 confirmed mapping to no level.
@@ -153,13 +155,13 @@ def test_nonsensical_counts_raise():
 
 # --- anti-drift: the skill's prose must match this module --------------------
 
+
 def test_skill_xp_table_matches_the_module():
     """If someone edits the skill's XP table and not this module, fail here."""
     table = re.search(r"\| Earned by \| XP \|\n\s*\|[-|]+\|\n((?:\s*\|.*\|\n)+)", SKILL)
     assert table, "could not find the XP table in the skill — did its format change?"
     stated = {
-        int(m.group(2))
-        for m in re.finditer(r"\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|", table.group(1))
+        int(m.group(2)) for m in re.finditer(r"\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|", table.group(1))
     }
     assert stated == set(XP_AWARDS.values()), (
         f"skill XP values {sorted(stated)} != module {sorted(set(XP_AWARDS.values()))}"
@@ -168,9 +170,7 @@ def test_skill_xp_table_matches_the_module():
 
 def test_skill_level_table_matches_the_module():
     """Same for the level ladder, including the master row's total."""
-    table = re.search(
-        r"\| Confirmed \| Level \|\n\s*\|[-|]+\|\n((?:\s*\|.*\|\n)+)", SKILL
-    )
+    table = re.search(r"\| Confirmed \| Level \|\n\s*\|[-|]+\|\n((?:\s*\|.*\|\n)+)", SKILL)
     assert table, "could not find the level table in the skill"
     rows = re.findall(r"\|\s*(.+?)\s*\|\s*(.+?)\s*\|", table.group(1))
 

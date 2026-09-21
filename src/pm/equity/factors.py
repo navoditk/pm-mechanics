@@ -9,6 +9,7 @@ def active_share(portfolio_weights, benchmark_weights):
     wb = np.asarray(benchmark_weights, dtype=float)
     return float(0.5 * np.sum(np.abs(wp - wb)))
 
+
 def style_tilt(portfolio_exposure, benchmark_exposure):
     """Active exposure to a style factor (value, momentum, quality, size,
     low-vol, ...) versus the benchmark. Compute each side's exposure first
