@@ -74,6 +74,7 @@ If no specialized persona matches the topic, fall back to
 | stress testing, scenario design | `concept_tutor.md` | `reference/concepts/stress_testing.md` | `notebooks/integration/11_scenarios.ipynb` | — (see `src/pm/scenarios.py`, no dedicated test) |
 | bond pricing, YTM | `fixed_income_tutor.md` | `reference/fixed_income/bond_pricing.md` | `notebooks/fixed_income/08_bond_math.ipynb` | `tests/test_fixed_income.py` |
 | duration, DV01, convexity, key-rate duration | `fixed_income_tutor.md` | `reference/fixed_income/duration.md`, `dv01.md`, `convexity.md`, `key_rate_duration.md` | `notebooks/fixed_income/09_duration_curve_risk.ipynb` | `tests/test_fixed_income.py` |
+| accrued interest, settlement, day count, clean/dirty price, invoice amount | `fixed_income_tutor.md` | `reference/fixed_income/accrued_interest_and_settlement.md` | `notebooks/fixed_income/08_bond_math.ipynb` | `tests/test_settlement.py` |
 | credit spreads, spread duration | `fixed_income_tutor.md` | `reference/fixed_income/spread_duration.md` | `notebooks/fixed_income/10_credit_spreads.ipynb` | `tests/test_fixed_income.py` |
 | convertible bonds, conversion ratio, conversion value, conversion premium | `fixed_income_tutor.md` | `reference/fixed_income/convertible_bonds.md` | `notebooks/fixed_income/36_munis_convertibles_preferred_and_alternatives.ipynb` | `tests/test_munis_and_convertibles.py` |
 | preferred stock, preferred securities | `fixed_income_tutor.md` | `reference/fixed_income/preferred_securities.md` | `notebooks/fixed_income/36_munis_convertibles_preferred_and_alternatives.ipynb` | `tests/test_equity.py` |
@@ -121,6 +122,7 @@ If no specialized persona matches the topic, fall back to
 | fixed-income attribution (carry/curve/spread) | `concept_tutor.md` | `reference/concepts/fixed_income_attribution.md` | `notebooks/integration/12_attribution.ipynb` | `tests/test_attribution.py` |
 | transaction costs, rebalancing | `concept_tutor.md` | `reference/concepts/transaction_costs_and_rebalancing.md` | `notebooks/integration/25_brinson_and_rebalancing.ipynb` | `tests/test_attribution.py` |
 | liquidity risk | `concept_tutor.md` | `reference/concepts/liquidity.md` | — (conceptual only, no code) | — |
+| backtesting biases, survivorship, look-ahead, point-in-time data | `concept_tutor.md` | `reference/concepts/backtesting_biases.md` | — (conceptual only, no code) | — |
 | performance measurement, time-weighted return, money-weighted return, TWR, MWR, GIPS | `concept_tutor.md` | `reference/concepts/performance_measurement.md` | `notebooks/integration/35_performance_ldi_and_asset_allocation.ipynb` | `tests/test_returns.py` |
 | covariance shrinkage, robust covariance | `portfolio_construction_tutor.md` | `reference/concepts/covariance_shrinkage.md` | `notebooks/optimization/26_shrinkage_and_black_litterman.ipynb` | `tests/test_robust.py` |
 | Black-Litterman | `portfolio_construction_tutor.md` | `reference/concepts/black_litterman.md` | `notebooks/optimization/26_shrinkage_and_black_litterman.ipynb` | `tests/test_robust.py` |

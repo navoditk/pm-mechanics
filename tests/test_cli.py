@@ -145,3 +145,67 @@ def test_check_runs_the_same_gates_as_ci():
 def test_fast_is_a_strict_subset_of_the_full_gate_set():
     assert CHECKS[:2] != CHECKS
     assert all(check in CHECKS for check in CHECKS[:2])
+
+
+# --- the tutor must be able to reach every page the library advertises -------
+
+
+def _routed_reference_pages() -> set[str]:
+    """Pages the tutor routing table can resolve.
+
+    A bare filename in a cell inherits the directory of the previous full
+    path in that same cell -- `reference/fixed_income/duration.md`, `dv01.md`
+    -- so resolving them naively reports working rows as broken.
+    """
+    import re
+
+    routed: set[str] = set()
+    for line in (ROOT / "skills/tutor/SKILL.md").read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|"):
+            continue
+        base = None
+        for path in re.findall(r"`([^`]+)`", line):
+            if not path.endswith(".md"):
+                continue
+            if "/" in path:
+                base = str(Path(path).parent)
+                routed.add(path.removeprefix("reference/"))
+            elif base:
+                routed.add(str(Path(base) / path).removeprefix("reference/"))
+    return routed
+
+
+def test_every_reference_page_has_a_tutor_route():
+    """A page with no route is unreachable from `tutor`, however good it is.
+
+    Two pages added in an earlier session -- backtesting biases and accrued
+    interest/settlement -- were in the mastery ledger but had no routing row,
+    so `pmexpert` could track them while `tutor` could not teach them.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import reference_taxonomy
+
+    unrouted = sorted(set(reference_taxonomy.TITLES) - _routed_reference_pages())
+    assert not unrouted, f"reference pages with no tutor route: {unrouted}"
+
+
+def test_every_routed_path_exists():
+    """A route pointing at a moved file fails only when a learner tries it."""
+    import re
+
+    missing = []
+    for line in (ROOT / "skills/tutor/SKILL.md").read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|") or "Persona" in line:
+            continue
+        base = None
+        for path in re.findall(r"`([^`]+)`", line):
+            if not re.search(r"\.(md|ipynb|py)$", path):
+                continue
+            if "/" in path:
+                base = str(Path(path).parent)
+                candidate = Path(path)
+            else:
+                candidate = Path(base) / path if base else Path(path)
+            if not ((ROOT / candidate).exists() or (ROOT / "tutors" / path).exists()):
+                missing.append(str(candidate))
+    assert not missing, f"tutor routes pointing at missing files: {sorted(set(missing))}"
