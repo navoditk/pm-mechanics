@@ -47,19 +47,51 @@ def strip_h1(text):
     return text
 
 
-def rewrite_xrefs(html_text, from_ref_key):
-    """Turn relative .md links between reference pages into in-page
-    anchors (#ref-...), since the artifact is one document rather than a
-    directory tree. Links that don't resolve to a known reference page
-    (notebooks, src/, resources/) are unwrapped to plain text - they'd
-    be dead inside a standalone file, and a dead link is worse than none.
+REPOSITORY_URL = "https://github.com/navoditk/pm-mechanics"
+
+# Pages the artifact embeds that are not section entries in the taxonomy.
+# Keyed by their path relative to `reference/`, valued by their page id.
+STANDALONE_PAGE_IDS = {
+    "glossary.md": "start-glossary",
+}
+
+
+def rewrite_xrefs(html_text, from_ref_key, from_root=None):
+    """Resolve every relative link so nothing in the artifact is a dead end.
+
+    The artifact is one standalone document, so a relative path to another
+    file in the tree resolves to nothing. Three outcomes, in order:
+
+    1. **A page the artifact contains** becomes an in-page `#anchor`
+       (`class="xref"`, which the page script intercepts to navigate).
+    2. **A real repository file the artifact does not contain** -- notebooks,
+       `src/`, `use_cases/` READMEs -- becomes a GitHub link. This is the
+       case that changed: these were previously unwrapped to plain text on
+       the reasoning that a dead link is worse than none. True, but a link
+       that opens the notebook is better than either, and it is the whole
+       point of a preview someone reads when they cannot clone the repo.
+    3. **Anything that resolves to no real file** is still unwrapped to
+       plain text, so a renamed target degrades to prose instead of becoming
+       a confident 404.
+
+    `from_root` is the directory the source document lives in, relative to
+    the repository root, so a link can be resolved from any page rather than
+    only from `reference/`.
     """
-    from_dir = Path(from_ref_key).parent
+    from_dir = Path(from_root or "reference") / Path(from_ref_key).parent
 
     def repl(m):
         href, label = m.group(1), m.group(2)
         if href.startswith(("http://", "https://", "#", "mailto:")):
             return m.group(0)
+
+        anchor = ""
+        if "#" in href:
+            href, _, anchor = href.partition("#")
+            anchor = f"#{anchor}"
+        if not href:
+            return m.group(0)
+
         parts = []
         for seg in (from_dir / href).as_posix().split("/"):
             if seg == "..":
@@ -68,8 +100,24 @@ def rewrite_xrefs(html_text, from_ref_key):
             elif seg not in (".", ""):
                 parts.append(seg)
         target = "/".join(parts)
-        if target in TITLES:
-            return f'<a href="#{page_id(target)}" class="xref">{label}</a>'
+
+        reference_key = target.removeprefix("reference/")
+        if reference_key in TITLES:
+            return f'<a href="#{page_id(reference_key)}" class="xref">{label}</a>'
+        # Pages the artifact carries outside the section taxonomy. The
+        # glossary is embedded as `start-glossary` but is not in TITLES, so
+        # checking TITLES alone sent every link to it out to GitHub when it
+        # could navigate in place.
+        if reference_key in STANDALONE_PAGE_IDS:
+            return f'<a href="#{STANDALONE_PAGE_IDS[reference_key]}" class="xref">{label}</a>'
+
+        resolved = ROOT / target
+        if resolved.exists():
+            kind = "tree" if resolved.is_dir() else "blob"
+            return (
+                f'<a href="{REPOSITORY_URL}/{kind}/main/{target}{anchor}"'
+                f' target="_blank" rel="noopener">{label}</a>'
+            )
         return label
 
     return re.sub(r'<a href="([^"]+)">(.*?)</a>', repl, html_text, flags=re.DOTALL)
@@ -85,7 +133,7 @@ def build_pages():
             "section": "Start Here",
             "subsection": None,
             "title": "Repository Overview",
-            "html": md_to_html(strip_h1(overview)),
+            "html": rewrite_xrefs(md_to_html(strip_h1(overview)), "OVERVIEW.md", "docs"),
         }
     )
 
@@ -107,7 +155,11 @@ def build_pages():
             "section": "Start Here",
             "subsection": None,
             "title": "Curriculum (14-Day Bootcamp)",
-            "html": md_to_html(strip_h1(curriculum)),
+            "html": rewrite_xrefs(
+                md_to_html(strip_h1(curriculum)),
+                "README.md",
+                "curriculum/bootcamp_01_foundations",
+            ),
         }
     )
 
@@ -133,7 +185,7 @@ def build_pages():
                 "section": "Use Cases",
                 "subsection": None,
                 "title": title,
-                "html": md_to_html(strip_h1(raw)),
+                "html": rewrite_xrefs(md_to_html(strip_h1(raw)), "README.md", f"use_cases/{slug}"),
             }
         )
 
