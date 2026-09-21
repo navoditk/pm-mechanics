@@ -33,15 +33,15 @@ frameworks, and manual reasoning comes before asking an agent.
 
 | | |
 |---|---|
-| Analytics code | 1,640 lines across 33 modules in `src/pm/` |
-| Tests | 211 passing, 19 test files |
+| Analytics code | 1,796 lines across 33 modules in `src/pm/` |
+| Tests | 270 passing, 23 test files |
 | Notebooks | 37, across 8 tracks (foundations, optimization, active, fixed income, FX/commodities, derivatives, equity, integration) |
 | Reference pages | 91 (including a glossary) |
 | Roadmap phases | 16 of 16 complete |
 | Bootcamp curriculum | 18 days (5 core + 13 extension) |
 | Use-case workflows | 11 |
 | Curated resource files | 10, 316 lines total |
-| Claude Code skills | `/tutor`, `/pm-query`, `/pmexpert` |
+| Learning skills | `pmexpert`, `tutor`, `pm-query` — in Claude Code, GitHub Copilot, and Codex alike |
 
 Module size is small by design — the median `src/pm` module is roughly
 30 lines: a formula made concrete, tested, with its assumptions stated

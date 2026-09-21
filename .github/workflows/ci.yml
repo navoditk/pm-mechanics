@@ -21,7 +21,10 @@ jobs:
       - name: Create venv and install project
         run: |
           uv venv --python 3.12
-          uv pip install -e ".[dev]"
+          # docs extra too: tests/test_artifact_preview.py guards the
+          # published preview and importorskips without `markdown`, so
+          # without it those ten tests silently never ran in CI.
+          uv pip install -e ".[dev,docs]"
 
       - name: Lint (ruff)
         run: .venv/bin/ruff check src tests scripts
