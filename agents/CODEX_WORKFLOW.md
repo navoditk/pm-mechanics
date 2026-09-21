@@ -37,3 +37,18 @@ has no Artifact publishing tool, so it can't refresh it directly — say
 so explicitly at the end of the session and tell the developer to ask
 Claude Code to run `scripts/build_artifact_preview.py` and republish it,
 rather than leaving the staleness unmentioned.
+
+## The learning skills are available here
+
+They are not Claude Code-only. `.agents/skills/` carries Codex discovery loaders for
+all three, each pointing at the canonical package under `skills/`:
+
+- `pmexpert` — the guided mastery path, one rung at a time
+- `tutor` — a per-topic tutor persona
+- `pm-query` — ask the analytics library a question in plain English
+
+Say the skill's name to start. The canonical content is in
+`skills/<name>/SKILL.md`; do not edit the loader.
+
+For navigating without a skill, `pm-mechanics topics`, `pm-mechanics
+reference <page>` and `pm-mechanics progress` are read-only and need no model.

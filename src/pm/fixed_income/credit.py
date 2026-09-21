@@ -9,6 +9,7 @@ def spread_pnl(market_value, spread_duration, spread_change_bp):
     delta_spread = spread_change_bp / 10_000.0
     return -market_value * spread_duration * delta_spread
 
+
 def z_spread(price, face, coupon_rate, years, frequency, curve_tenors, curve_rates):
     """Constant spread over the interpolated zero curve that reprices the
     bond to `price`. Solved by root-finding, not closed-form.
@@ -24,12 +25,15 @@ def z_spread(price, face, coupon_rate, years, frequency, curve_tenors, curve_rat
 
     return brentq(_price_at_spread, -0.05, 0.50)
 
+
 def survival_probability(hazard_rate, t):
     """Probability of no default by time t, under a constant hazard rate."""
     return float(np.exp(-hazard_rate * t))
 
+
 def expected_loss(notional, default_probability, recovery_rate):
     return notional * default_probability * (1 - recovery_rate)
+
 
 def credit_spread_from_hazard(hazard_rate, recovery_rate):
     """Approximate par CDS/credit spread implied by a constant hazard rate
@@ -37,8 +41,10 @@ def credit_spread_from_hazard(hazard_rate, recovery_rate):
     """
     return hazard_rate * (1 - recovery_rate)
 
+
 def cds_bond_basis(cds_spread, bond_spread):
     return cds_spread - bond_spread
+
 
 def index_intrinsic_spread(constituent_spreads, weights=None):
     """Intrinsic value of a CDS index: the weighted average of its
@@ -55,6 +61,7 @@ def index_intrinsic_spread(constituent_spreads, weights=None):
         weights = np.asarray(weights, dtype=float)
     return float(np.average(spreads, weights=weights))
 
+
 def index_basis(index_spread, intrinsic_spread):
     """Index basis: the traded index spread minus its intrinsic value.
     A nonzero basis is the classic index-vs-constituents relative-value
@@ -66,11 +73,13 @@ def index_basis(index_spread, intrinsic_spread):
     """
     return index_spread - intrinsic_spread
 
+
 def leverage_ratio(total_debt, ebitda):
     """Debt / EBITDA - the standard leverage measure in credit analysis
     and loan covenants. Higher = more leveraged = more credit risk.
     """
     return total_debt / ebitda
+
 
 def interest_coverage_ratio(ebitda, interest_expense):
     """EBITDA / interest expense - how many times over a borrower could
@@ -78,6 +87,7 @@ def interest_coverage_ratio(ebitda, interest_expense):
     threshold, not a maximum (opposite direction from leverage_ratio).
     """
     return ebitda / interest_expense
+
 
 def fixed_charge_coverage_ratio(ebitda, interest_expense, mandatory_principal_payments):
     """EBITDA / (interest expense + mandatory principal payments) - a

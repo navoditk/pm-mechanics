@@ -6,6 +6,7 @@ from ._utils import finite_array
 def active_weights(portfolio_weights, benchmark_weights):
     return np.asarray(portfolio_weights, float) - np.asarray(benchmark_weights, float)
 
+
 def tracking_error(portfolio_weights, benchmark_weights, covariance):
     a = active_weights(portfolio_weights, benchmark_weights)
     cov = np.asarray(covariance, float)
@@ -14,6 +15,7 @@ def tracking_error(portfolio_weights, benchmark_weights, covariance):
 
 def active_return(portfolio_return, benchmark_return):
     return float(portfolio_return - benchmark_return)
+
 
 def realized_tracking_error(portfolio_returns, benchmark_returns, periods_per_year=12):
     """Ex-post (realized) tracking error: annualized volatility of the
@@ -32,6 +34,7 @@ def realized_tracking_error(portfolio_returns, benchmark_returns, periods_per_ye
         raise ValueError("Active return volatility must be positive and finite.")
     return float(std * np.sqrt(periods_per_year))
 
+
 def marginal_contribution_to_tracking_error(portfolio_weights, benchmark_weights, covariance):
     """How much tracking error changes per unit change in each asset's
     active weight, holding the others fixed - the number a benchmark-
@@ -47,6 +50,7 @@ def marginal_contribution_to_tracking_error(portfolio_weights, benchmark_weights
         raise ValueError("Tracking error must be positive.")
     return (cov @ a) / te
 
+
 def component_contribution_to_tracking_error(portfolio_weights, benchmark_weights, covariance):
     """Each asset's marginal contribution to tracking error, scaled by its
     own active weight - sums exactly to total tracking error, so this is
@@ -55,6 +59,7 @@ def component_contribution_to_tracking_error(portfolio_weights, benchmark_weight
     a = active_weights(portfolio_weights, benchmark_weights)
     mcte = marginal_contribution_to_tracking_error(portfolio_weights, benchmark_weights, covariance)
     return a * mcte
+
 
 def information_ratio(portfolio_returns, benchmark_returns, periods_per_year=12):
     """Realized information ratio: annualized mean active return per unit
@@ -70,8 +75,11 @@ def information_ratio(portfolio_returns, benchmark_returns, periods_per_year=12)
     active = finite_array(p - b, min_size=2)
     realized_te = active.std(ddof=1)
     if not np.isfinite(realized_te) or realized_te <= 0:
-        raise ValueError("Active return volatility (realized tracking error) must be positive and finite.")
+        raise ValueError(
+            "Active return volatility (realized tracking error) must be positive and finite."
+        )
     return float(active.mean() / realized_te * np.sqrt(periods_per_year))
+
 
 def information_coefficient(forecasts, realized_returns):
     """Cross-sectional correlation between forecast scores (or ranks) and
@@ -89,6 +97,7 @@ def information_coefficient(forecasts, realized_returns):
         raise ValueError("forecasts and realized_returns must each have nonzero variance.")
     return float(np.corrcoef(f, r)[0, 1])
 
+
 def effective_breadth(n_bets, average_correlation=0.0):
     """Number of independent bets (breadth), adjusted for correlation
     between them: `n_bets` truly independent forecasts are worth less the
@@ -101,6 +110,7 @@ def effective_breadth(n_bets, average_correlation=0.0):
     rho = float(average_correlation)
     return float(n / (1 + (n - 1) * rho))
 
+
 def transfer_coefficient(actual_active_weights, unconstrained_active_weights):
     """How well real-world constraints let a portfolio implement its
     unconstrained-optimal active bets: the correlation between the active
@@ -112,12 +122,19 @@ def transfer_coefficient(actual_active_weights, unconstrained_active_weights):
     a = np.asarray(actual_active_weights, dtype=float)
     u = np.asarray(unconstrained_active_weights, dtype=float)
     if a.shape != u.shape:
-        raise ValueError("actual_active_weights and unconstrained_active_weights must be the same shape.")
+        raise ValueError(
+            "actual_active_weights and unconstrained_active_weights must be the same shape."
+        )
     if np.std(a) == 0 or np.std(u) == 0:
-        raise ValueError("actual_active_weights and unconstrained_active_weights must each have nonzero variance.")
+        raise ValueError(
+            "actual_active_weights and unconstrained_active_weights must each have nonzero variance."
+        )
     return float(np.corrcoef(a, u)[0, 1])
 
-def fundamental_law_ir(information_coefficient_value, breadth_value, transfer_coefficient_value=1.0):
+
+def fundamental_law_ir(
+    information_coefficient_value, breadth_value, transfer_coefficient_value=1.0
+):
     """The Fundamental Law of Active Management (Grinold; extended by
     Clarke, de Silva & Thorley to include the transfer coefficient):
 
@@ -128,4 +145,6 @@ def fundamental_law_ir(information_coefficient_value, breadth_value, transfer_co
     well constraints let those bets reach the portfolio (TC, 1.0 = no
     constraint cost - the original, unconstrained form of the law).
     """
-    return float(information_coefficient_value * np.sqrt(breadth_value) * transfer_coefficient_value)
+    return float(
+        information_coefficient_value * np.sqrt(breadth_value) * transfer_coefficient_value
+    )

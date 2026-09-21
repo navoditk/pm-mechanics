@@ -21,6 +21,7 @@ def minimum_variance(covariance, long_only=True, max_weight=None):
     problem = cp.Problem(cp.Minimize(cp.quad_form(w, cov)), constraints)
     return solved_weights(problem, w)
 
+
 def mean_variance(expected_returns, covariance, risk_aversion=5.0, long_only=True, max_weight=None):
     """Mean-variance optimal weights under the standard utility
 
@@ -44,6 +45,7 @@ def mean_variance(expected_returns, covariance, risk_aversion=5.0, long_only=Tru
         constraints.append(w <= max_weight)
     objective = cp.Maximize(mu @ w - 0.5 * risk_aversion * cp.quad_form(w, cov))
     return solved_weights(cp.Problem(objective, constraints), w)
+
 
 def efficient_frontier(expected_returns, covariance, n_points=20, long_only=True):
     """Trace the efficient frontier: for `n_points` target returns spanning
@@ -72,6 +74,7 @@ def efficient_frontier(expected_returns, covariance, n_points=20, long_only=True
         weights[i] = w_val
         volatilities[i] = float(np.sqrt(w_val @ cov @ w_val))
     return targets, volatilities, weights
+
 
 def max_sharpe(expected_returns, covariance, risk_free_rate=0.0, long_only=True):
     """Tangency portfolio: the weights that maximize the Sharpe ratio
@@ -115,6 +118,7 @@ def max_sharpe(expected_returns, covariance, risk_free_rate=0.0, long_only=True)
             "return above risk_free_rate."
         )
     return np.asarray(y.value, dtype=float).ravel() / float(kappa.value)
+
 
 def min_tracking_error(benchmark_weights, covariance, long_only=True, max_weight=None):
     """Portfolio weights minimizing tracking error to a benchmark:

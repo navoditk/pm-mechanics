@@ -40,8 +40,14 @@ docs = [
     "markdown>=3.6",
 ]
 
+[project.scripts]
+pm-mechanics = "pm_mechanics_cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools]
+py-modules = ["pm_mechanics_cli"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

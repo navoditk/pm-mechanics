@@ -15,6 +15,7 @@ Refresh manually when content changes meaningfully (see AGENTS.md rule 14):
 Output is a gitignored build artifact; publish it with the Artifact tool
 to the existing URL already linked from README.md.
 """
+
 import json
 import re
 from pathlib import Path
@@ -78,53 +79,63 @@ def build_pages():
     pages = []
 
     overview = (ROOT / "docs" / "OVERVIEW.md").read_text()
-    pages.append({
-        "id": "start-overview",
-        "section": "Start Here",
-        "subsection": None,
-        "title": "Repository Overview",
-        "html": md_to_html(strip_h1(overview)),
-    })
+    pages.append(
+        {
+            "id": "start-overview",
+            "section": "Start Here",
+            "subsection": None,
+            "title": "Repository Overview",
+            "html": md_to_html(strip_h1(overview)),
+        }
+    )
 
     glossary = (ROOT / "reference" / "glossary.md").read_text()
-    pages.append({
-        "id": "start-glossary",
-        "section": "Start Here",
-        "subsection": None,
-        "title": "Glossary",
-        "html": rewrite_xrefs(md_to_html(strip_h1(glossary)), "glossary.md"),
-    })
+    pages.append(
+        {
+            "id": "start-glossary",
+            "section": "Start Here",
+            "subsection": None,
+            "title": "Glossary",
+            "html": rewrite_xrefs(md_to_html(strip_h1(glossary)), "glossary.md"),
+        }
+    )
 
     curriculum = (ROOT / "curriculum" / "bootcamp_01_foundations" / "README.md").read_text()
-    pages.append({
-        "id": "start-curriculum",
-        "section": "Start Here",
-        "subsection": None,
-        "title": "Curriculum (14-Day Bootcamp)",
-        "html": md_to_html(strip_h1(curriculum)),
-    })
+    pages.append(
+        {
+            "id": "start-curriculum",
+            "section": "Start Here",
+            "subsection": None,
+            "title": "Curriculum (14-Day Bootcamp)",
+            "html": md_to_html(strip_h1(curriculum)),
+        }
+    )
 
     for section, subsection, items in SECTIONS:
         for ref_key, title in items:
             raw = (ROOT / "reference" / ref_key).read_text()
             body = rewrite_xrefs(md_to_html(strip_h1(raw)), ref_key)
-            pages.append({
-                "id": page_id(ref_key),
-                "section": section,
-                "subsection": subsection,
-                "title": title,
-                "html": body,
-            })
+            pages.append(
+                {
+                    "id": page_id(ref_key),
+                    "section": section,
+                    "subsection": subsection,
+                    "title": title,
+                    "html": body,
+                }
+            )
 
     for slug, title in USE_CASES:
         raw = (ROOT / "use_cases" / slug / "README.md").read_text()
-        pages.append({
-            "id": f"usecase-{slug}",
-            "section": "Use Cases",
-            "subsection": None,
-            "title": title,
-            "html": md_to_html(strip_h1(raw)),
-        })
+        pages.append(
+            {
+                "id": f"usecase-{slug}",
+                "section": "Use Cases",
+                "subsection": None,
+                "title": title,
+                "html": md_to_html(strip_h1(raw)),
+            }
+        )
 
     return pages
 

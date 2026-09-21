@@ -9,14 +9,19 @@ sys.path.insert(0, str(root / "scripts"))
 from mastery_rules import parse_rungs, status_for
 
 required = [
-    "README.md","ROADMAP.md","LEARNING_PATHS.md","AGENTS.md",
-    "reference/index.md","use_cases/index.md","tutors/README.md"
+    "README.md",
+    "ROADMAP.md",
+    "LEARNING_PATHS.md",
+    "AGENTS.md",
+    "reference/index.md",
+    "use_cases/index.md",
+    "tutors/README.md",
 ]
 for rel in required:
-    p = root/rel
+    p = root / rel
     assert p.exists(), f"Missing {rel}"
 
-nbs = list((root/"notebooks").rglob("*.ipynb"))
+nbs = list((root / "notebooks").rglob("*.ipynb"))
 assert len(nbs) >= 12
 for p in nbs:
     json.loads(p.read_text())
@@ -53,9 +58,7 @@ def check_mastery():
 
         expected = status_for(rungs)
         if status != expected:
-            errors.append(
-                f"{concept}: Rungs {rungs!r} imply status {expected!r}, found {status!r}"
-            )
+            errors.append(f"{concept}: Rungs {rungs!r} imply status {expected!r}, found {status!r}")
 
         if not xp.isdigit():
             errors.append(f"{concept}: XP must be a non-negative integer, found {xp!r}")
@@ -72,6 +75,5 @@ def check_mastery():
 concepts = check_mastery()
 
 print(
-    f"Repository structure OK. {len(nbs)} notebooks validated. "
-    f"{concepts} mastery rows consistent."
+    f"Repository structure OK. {len(nbs)} notebooks validated. {concepts} mastery rows consistent."
 )

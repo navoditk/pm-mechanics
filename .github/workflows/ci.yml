@@ -26,8 +26,18 @@ jobs:
       - name: Lint (ruff)
         run: .venv/bin/ruff check src tests scripts
 
+      # Formatting was previously enforced only by whoever remembered to run
+      # it. Scoped to src/tests/scripts deliberately: ruff also formats Python
+      # inside markdown fences, and reformatting reference pages is a content
+      # decision rather than a CI gate.
+      - name: Format (ruff)
+        run: .venv/bin/ruff format --check src tests scripts
+
       - name: Repo structure check
         run: .venv/bin/python scripts/check_repo.py
+
+      - name: Documentation links and anchors
+        run: .venv/bin/python scripts/check_doc_links.py
 
       - name: Test (pytest)
         run: .venv/bin/pytest

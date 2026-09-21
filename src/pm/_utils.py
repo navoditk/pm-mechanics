@@ -1,6 +1,7 @@
 """Shared private helpers - not part of the public pm API or agent tool
 catalog (see scripts/generate_tool_schema.py's leading-underscore filter).
 """
+
 import numpy as np
 
 
@@ -16,7 +17,5 @@ def finite_array(values, min_size=1):
     arr = np.asarray(values, dtype=float)
     finite = arr[np.isfinite(arr)]
     if finite.size < min_size:
-        raise ValueError(
-            f"Need at least {min_size} finite observation(s); got {finite.size}."
-        )
+        raise ValueError(f"Need at least {min_size} finite observation(s); got {finite.size}.")
     return finite

@@ -4,6 +4,7 @@ def roll_yield(near_price, far_price):
     """
     return (near_price - far_price) / far_price
 
+
 def commodity_curve_state(near_price, far_price):
     if near_price > far_price:
         return "backwardation"

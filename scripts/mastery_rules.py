@@ -1,6 +1,6 @@
 """Single source of truth for the /pmexpert depth ladder's bookkeeping.
 
-`.claude/skills/pmexpert/SKILL.md` states these rules in prose for the agent
+`skills/pmexpert/SKILL.md` states these rules in prose for the agent
 running a session, and `scripts/check_repo.py` enforces them against
 `docs/mastery.md`. Without this module those are two independent copies of
 the same rules, and `tests/test_mastery_rules.py` would be a third.

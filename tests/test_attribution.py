@@ -12,6 +12,7 @@ from pm.attribution import (
 def test_total_attribution_hand_example():
     assert np.isclose(total_attribution({"a": 100.0, "b": -30.0}), 70.0)
 
+
 def test_brinson_effects_sum_to_active_return():
     wp = np.array([0.6, 0.4])
     wb = np.array([0.5, 0.5])
@@ -23,12 +24,15 @@ def test_brinson_effects_sum_to_active_return():
 
     assert np.isclose(allocation.sum() + selection.sum() + interaction.sum(), active_return)
 
+
 def test_fixed_income_return_decomposition_sums_to_total():
     result = fixed_income_return_decomposition(carry=0.02, curve_effect=-0.01, spread_effect=0.005)
     assert np.isclose(result["total"], 0.015)
 
+
 def test_transaction_cost_hand_example():
     assert np.isclose(transaction_cost(1_000_000, 5), 500.0)
+
 
 def test_rebalancing_trades_hand_example():
     trades = rebalancing_trades([0.6, 0.4], [0.5, 0.5], 1_000_000)

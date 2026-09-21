@@ -12,7 +12,7 @@ A build-first portfolio-management mechanics trainer: the FICC and equity analyt
 - **[Docs site](https://navoditk.github.io/pm-mechanics/)** — the entire curriculum (every reference page, notebook, and use case) as a searchable static site, rebuilt automatically from `main` on every push
 - **[Read-only preview](https://claude.ai/code/artifact/902379a8-c198-4970-aca8-4cb71e2a3d5c)** — a lighter, single-page version covering every reference page, the curriculum outline, and use cases, for a quick look or if the docs site above isn't reachable; refreshed on request rather than automatically
 
-Either works without git, Python, or an account — for the interactive version (running tests, `/pmexpert`, `/tutor`, `/pm-query`), clone the repo instead.
+Either works without git, Python, or an account. For the interactive version — running tests, and the `pmexpert` / `tutor` / `pm-query` skills — clone the repo instead.
 
 ## What this repo is
 
@@ -33,9 +33,28 @@ The goal is not just to read about PM concepts. The goal is to understand them d
 5. Run the test suite and update progress in [docs/PROGRESS.md](docs/PROGRESS.md)
 
 Prefer to be walked through it interactively instead of picking notebooks
-yourself? Type `/pmexpert` and see
-[docs/mastery-guide.md](docs/mastery-guide.md) — one command teaches the
-whole curriculum, tracks progress, and picks up where you left off.
+yourself? Open this checkout in **Claude Code, GitHub Copilot, or Codex** and
+say **`pmexpert`**. See [docs/mastery-guide.md](docs/mastery-guide.md) — one
+skill teaches the whole curriculum, tracks progress rung by rung, and picks up
+where you left off. Two companions sit beside it: `tutor` for a single topic,
+and `pm-query` to ask the analytics library a question in plain English.
+
+All three work in all three tools. Each carries a thin discovery loader
+(`.claude/skills/`, `.github/skills/`, `.agents/skills/`) pointing at one
+canonical package under `skills/`, so the experience does not depend on which
+agent you use.
+
+Navigating without an agent? One command is the front door:
+
+```bash
+uv pip install -e ".[dev]"
+pm-mechanics                              # every command, grouped by audience
+pm-mechanics topics "fixed income"        # the reference library, by section
+pm-mechanics reference fixed_income/duration.md
+pm-mechanics progress                     # your mastery ladder
+```
+
+These are read-only and need no model, network, or API key.
 
 ## Quick start
 

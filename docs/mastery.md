@@ -1,7 +1,7 @@
 # Mastery
 
-Tracked and updated by `/tutor` (see `.claude/skills/tutor/SKILL.md`) and by
-`/pmexpert` (`.claude/skills/pmexpert/SKILL.md`) at the end of every session.
+Tracked and updated by `/tutor` (see `skills/tutor/SKILL.md`) and by
+`/pmexpert` (`skills/pmexpert/SKILL.md`) at the end of every session.
 Read at the start of a session to decide what to revisit. Not hand-edited
 outside a session.
 

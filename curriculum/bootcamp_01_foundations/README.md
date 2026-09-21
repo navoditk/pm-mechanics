@@ -219,8 +219,8 @@ financial math. Read `reference/concepts/agentic_pm_analytics.md` first;
 it maps every roadmap bullet to the concrete artifact that satisfies it.
 
 1. tool schemas — `docs/tool_schema.json`
-2. natural-language query layer — `/pm-query` (`.claude/skills/pm-query/SKILL.md`)
-3. tutor agents — `/tutor` (`.claude/skills/tutor/SKILL.md`, built earlier)
+2. natural-language query layer — `/pm-query` (`skills/pm-query/SKILL.md`)
+3. tutor agents — `/tutor` (`skills/tutor/SKILL.md`, built earlier)
 4. evals — `docs/agentic_analytics_evals.md`
 5. grounding, guardrails, explainability, observability — see how both
    skills apply `AGENTS.md`'s rules and cite/log every answer

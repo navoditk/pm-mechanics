@@ -2,18 +2,18 @@
 
 Tutor agents are an optional learning layer over the repository, not a replacement for the repository.
 
-Run one interactively with `/tutor <topic-or-persona>` (see `.claude/skills/tutor/SKILL.md`
+Run one interactively with `/tutor <topic-or-persona>` (see `skills/tutor/SKILL.md`
 for routing and behavior). Session outcomes are logged to `docs/tutor_sessions/`
 and tracked in `docs/mastery.md`.
 
 For a direct analytics answer instead of a teaching session, use
-`/pm-query <question>` (`.claude/skills/pm-query/SKILL.md`) — it calls the
+`/pm-query <question>` (`skills/pm-query/SKILL.md`) — it calls the
 actual `src/pm` function and cites it, rather than teaching toward the
 answer. See `reference/concepts/agentic_pm_analytics.md` for how the two
 skills relate.
 
 To work through the *entire* curriculum rather than one topic at a time,
-use `/pmexpert` (`.claude/skills/pmexpert/SKILL.md`) — a single,
+use `/pmexpert` (`skills/pmexpert/SKILL.md`) — a single,
 self-contained trainer with no second skill to invoke. `/pmexpert` alone
 teaches the next weak-or-untested concept in curriculum order;
 `/pmexpert quiz` runs 10 rapid multiple-choice questions (`/pmexpert quiz 20`

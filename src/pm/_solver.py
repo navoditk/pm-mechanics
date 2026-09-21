@@ -6,6 +6,7 @@ optimal point (infeasible, unbounded, or solver error). Without a check,
 `np.asarray(None).ravel()` yields `array([None], dtype=object)` - no
 exception, and the bad value silently poisons whatever consumes it.
 """
+
 import numpy as np
 
 _ACCEPTABLE = ("optimal", "optimal_inaccurate")
